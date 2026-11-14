@@ -1,0 +1,1700 @@
+<title>Espai Wellness Pàdel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+/* Layout: dark premium, serif elegante con acentos lila, bloques redondeados; 5 páginas por hash */
+:root{
+  --bg:#0C0D0C; --fg:#F3F2EE; --mut:#B9B8B1; --soft:#DAD9D3; --panel:#151715;
+  --lila:#A02070; --lilaD:#7E1858; --lilaT:#E39FD4;
+  --line:rgba(243,242,238,.14); --bd:rgba(243,242,238,.4);
+  --paper:#F3F2EE; --ink:#0C0D0C; --ink2:#3A3A36; --r:22px;
+  --serif:'Instrument Serif',Georgia,serif; --sans:'Inter Tight',system-ui,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){ --bg:#0C0D0C; --fg:#F3F2EE; } }
+:root[data-theme="light"]{ --bg:#0C0D0C; --fg:#F3F2EE; }
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.5;margin:0}
+::selection{background:var(--lila);color:#fff}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:900px){.gut{padding-left:max(56px,env(safe-area-inset-left,0px));padding-right:max(56px,env(safe-area-inset-right,0px))}}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{text-wrap:balance}
+.serif{font-family:var(--serif);font-weight:400}
+.serif em,.h1 em,.h2 em{font-style:italic;color:var(--lilaT)}
+.out{color:transparent;-webkit-text-stroke:1px var(--fg);font-style:italic}
+.photo{background-size:cover;background-position:center}
+.ph{background-color:#1a1c1a;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 14px)}
+.pl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);border:1px solid rgba(243,242,238,.3);padding:6px 10px;align-self:flex-start;border-radius:999px}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;font-weight:600;font-size:14px;letter-spacing:.04em;cursor:pointer;border:0;font-family:inherit;box-sizing:border-box;border-radius:999px;transition:transform .3s ease,background .3s ease,color .3s ease,border-color .3s ease,opacity .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-a{background:var(--lila);color:#fff}
+.btn-a:hover{background:var(--lilaD)}
+.btn-w{background:var(--fg);color:var(--ink)}
+.btn-w:hover{opacity:.9}
+.btn-o{background:transparent;color:var(--fg);border:1px solid rgba(243,242,238,.5)}
+.btn-o:hover{border-color:var(--fg)}
+.btn-k{background:var(--ink);color:var(--paper)}
+.btn-priv{background:#fff;color:var(--lila);border:1.5px solid var(--lila)}
+.btn-priv:hover{background:var(--lila);color:#fff}
+.chip{min-height:44px;padding:0 18px;display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--fg);border:1px solid var(--bd);border-radius:999px;font:inherit;font-size:14px;cursor:pointer;transition:border-color .25s,color .25s}
+.chip:hover{border-color:var(--lilaT);color:var(--lilaT)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+.tag{border:1px solid rgba(243,242,238,.3);padding:7px 14px;font-size:13px;border-radius:999px}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding-block:10px;border-bottom:1px solid rgba(12,13,12,.12)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+nav.main{display:flex;flex-wrap:wrap;gap:0 26px;font-size:14px;font-weight:500}
+nav.main a{position:relative;padding:12px 0}
+nav.main a::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:2px;background:var(--lila);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+nav.main a:hover::after,nav.main a.on::after{transform:scaleX(1)}
+a:not(.btn):not([class*="nav"]):hover{opacity:.72}
+.page{display:none}.page.on{display:block}
+@media (prefers-reduced-motion: no-preference){
+ .page.on{animation:pg .5s ease both}
+ @keyframes pg{from{opacity:0}to{opacity:1}}
+ .hero .hrow{animation:up 1s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:.1s}
+ @keyframes up{from{opacity:0;transform:translateY(42px)}to{opacity:1;transform:none}}
+ .rv{opacity:0;transform:translateY(30px) scale(.98);transition:opacity .8s ease calc(var(--i,0)*45ms),transform .8s cubic-bezier(.2,.7,.2,1) calc(var(--i,0)*45ms)}
+ .rv.in{opacity:1;transform:none}
+}
+.wrapin{padding:12px}
+.hero{position:relative;min-height:80vh;box-sizing:border-box;padding:32px clamp(18px,4vw,52px) 48px;display:flex;flex-direction:column;justify-content:flex-end;gap:40px;border-radius:calc(var(--r) + 8px);overflow:hidden;background:var(--panel)}
+/* Hero: película completa en tramos encadenados (dos <video> en fundido) */
+.hvids{position:absolute;inset:0;overflow:hidden;background:#151715 url('img/hero-poster.jpg') center/cover no-repeat}
+.hvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+.hvid.on{opacity:1}
+.hsh{position:absolute;inset:0;background:linear-gradient(rgba(12,13,12,.34) 0%,rgba(12,13,12,.12) 34%,rgba(12,13,12,.74) 100%)}
+.hsnd{position:absolute;top:clamp(14px,2.4vw,28px);right:clamp(14px,2.4vw,28px);z-index:2;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px 0 14px;border-radius:999px;border:1px solid rgba(243,242,238,.45);background:rgba(12,13,12,.38);color:#fff;font:inherit;font-size:13px;letter-spacing:.06em;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .3s,border-color .3s}
+.hsnd:hover{background:rgba(160,32,112,.7);border-color:var(--lilaT)}
+.hprog{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(243,242,238,.16);z-index:2}
+.hprog span{display:block;height:100%;width:0;background:var(--lilaT)}
+.hero .hrow{position:relative}
+.hrow{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px}
+.h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,9vw,148px);line-height:.9;letter-spacing:-.01em;margin:0}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.5vw,86px);line-height:.95;margin:0}
+/* Recorregut */
+.tour{position:relative;background:var(--panel);display:flex;flex-wrap:wrap;align-items:stretch;border-top:1px solid var(--line);border-radius:var(--r2) var(--r2) 0 0;margin:0 12px 12px;transform-origin:50% 0}
+.tour::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--bg);opacity:calc(var(--q,0)*.64);pointer-events:none}
+.tour .img{flex:3 1 480px;box-sizing:border-box;padding:14px}
+.tour .img .door{height:100%;min-height:min(420px,56vh)}
+.tour .txt{flex:2 1 320px;box-sizing:border-box;padding:40px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+@media(min-width:900px){
+ .tour .txt{padding:48px 56px}
+ .tour{position:sticky;top:calc(var(--hh,0px) + 10px + var(--k,0)*14px);margin-bottom:0;transform:scale(calc(1 - var(--q,0)*.05))}
+ .tour .img .door{min-height:min(600px,68vh)}
+}
+.tour .num{font-family:var(--serif);font-style:italic;font-size:clamp(56px,6.5vw,100px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(243,242,238,.4)}
+.tour h3{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5vw,72px);line-height:.95;margin:0}
+.light{background:var(--paper);color:var(--ink)}
+.light .eyebrow{color:#5A5A55}
+.light .h2 em{color:var(--lila)}
+/* Vídeo integrado */
+.vwrap{position:relative;border-radius:calc(var(--r) + 8px);overflow:hidden}
+.vwrap video{display:block;width:100%;height:min(82vh,56vw);object-fit:cover}
+.vcap{position:absolute;left:clamp(16px,3vw,36px);bottom:clamp(14px,2.5vw,28px);color:rgba(255,255,255,.72);font-size:13px;letter-spacing:.18em;text-transform:uppercase;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+/* Carrusel Equinox — todas las actividades, en B/N */
+.eq{--g:max(16px,env(safe-area-inset-left,0px));display:flex;gap:16px;overflow-x:auto;cursor:grab;padding:8px var(--g) 12px;scroll-padding-inline:var(--g);scrollbar-width:none;-webkit-user-select:none;user-select:none;perspective:1400px}
+@media(min-width:900px){.eq{--g:max(56px,env(safe-area-inset-left,0px))}}
+.eq::-webkit-scrollbar{display:none}
+.eq.drag{cursor:grabbing}
+.eqi{position:relative;flex:0 0 auto;height:min(480px,60vh);border-radius:var(--r);overflow:hidden;background:var(--panel);border:0;padding:0;cursor:inherit;font:inherit;color:#fff;transform:rotateY(calc(var(--v,0)*1deg))}
+.eqi img{height:100%;width:116%;max-width:none;margin-left:-8%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.08) brightness(.96);translate:var(--px,0px) 0;scale:var(--hs,1);transition:scale .9s cubic-bezier(.2,.7,.2,1);pointer-events:none;-webkit-user-drag:none}
+.eqi:hover img{--hs:1.045}
+.eqi::after{content:"";position:absolute;inset:auto 0 0 0;height:42%;background:linear-gradient(transparent,rgba(12,13,12,.62));pointer-events:none}
+.eqi .cap{position:absolute;left:16px;bottom:14px;z-index:1;color:#fff;font-family:var(--serif);font-size:25px;line-height:1;letter-spacing:.005em;text-align:left;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.eqc{display:flex;align-items:center;gap:24px;padding-block:20px 0}
+.eqp{position:relative;flex:1;height:2px;background:rgba(243,242,238,.18);border-radius:2px}
+.eqp span{position:absolute;top:-1px;left:0;height:4px;width:20%;background:var(--fg);border-radius:4px}
+.eqb{display:flex;gap:10px}
+.eqb button{width:46px;height:46px;border-radius:50%;border:1px solid var(--bd);background:transparent;color:var(--fg);font:inherit;font-size:18px;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.eqb button:hover{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+.bw img{filter:grayscale(1) contrast(1.06)}
+.bw:hover img{filter:none}
+/* Lista de servicios */
+/* Servicios: en móvil, mosaico de puertas; en escritorio, lista con escenario fijo */
+.svl{display:grid;grid-template-columns:1fr 1fr;gap:26px 12px}
+.srw{position:relative;display:block;padding:0;background:transparent;border:0;color:var(--fg);font:inherit;text-align:left;cursor:pointer}
+.srw:nth-child(even){margin-top:34px}
+.srw .srm{aspect-ratio:4/5;width:100%}
+.srw .sn{position:absolute;top:14px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.22em;color:#fff;font-variant-numeric:tabular-nums;z-index:2;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.srw .stt{display:block;margin-top:12px;font-family:var(--serif);font-weight:400;font-size:25px;line-height:1.05}
+.srw .sk,.srw .sar{display:none}
+.svs{display:none}
+@media(min-width:900px){
+ .svx{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(40px,6vw,96px);align-items:start}
+ .svl{display:block}
+ .srw{display:flex;align-items:center;gap:clamp(14px,3vw,30px);width:100%;padding:16px 0;border-top:1px solid var(--line)}
+ .mo .srw{opacity:.36;transition:opacity .5s ease}
+ .srw:nth-child(even){margin-top:0}
+ .srw:last-child{border-bottom:1px solid var(--line)}
+ .srw .srm{display:none}
+ .srw .sn{position:static;text-align:left;font-size:12px;letter-spacing:.2em;color:var(--mut);min-width:34px;text-shadow:none}
+ .srw .stt{margin:0;font-size:clamp(30px,3.5vw,52px);line-height:1.05;transition:color .4s ease,transform .6s cubic-bezier(.2,.75,.15,1)}
+ .srw .sk{display:block;margin-left:auto;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+ .srw .sar{display:block;font-size:22px;color:var(--lilaT);transition:transform .45s cubic-bezier(.2,.75,.15,1)}
+ .mo .srw.act{opacity:1}
+ .srw:hover .stt{color:var(--lilaT)}
+ html:not(.mo) .svs{display:none}
+ html:not(.mo) .svx{display:block}
+ .srw.act .stt{color:var(--lilaT);font-style:italic;transform:translateX(16px)}
+ .srw.act .sar{transform:translate(4px,-4px)}
+ .svs{display:block;position:sticky;top:calc(var(--hh,0px) + 20px);height:min(74vh,660px);border-radius:var(--r2);overflow:hidden;background:var(--panel);cursor:pointer}
+}
+.stg{position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:clip-path .9s cubic-bezier(.76,0,.24,1)}
+.stg.on{clip-path:inset(0 0 0 0)}
+.stg.ns{transition:none}
+.stg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;scale:1.14;transition:scale 1.6s cubic-bezier(.2,.7,.2,1)}
+.stg.on img{scale:1}
+.stg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.06) 38%,rgba(10,10,12,.84) 100%)}
+.svc-cap{position:absolute;left:clamp(20px,3vw,34px);right:clamp(20px,3vw,34px);bottom:clamp(20px,3vw,32px);z-index:3;pointer-events:none;display:flex;flex-direction:column;gap:12px}
+.svc-cap .k{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--lilaT)}
+.svc-cap .t{font-family:var(--serif);font-size:clamp(34px,3.6vw,54px);line-height:1}
+.svc-cap .c{display:flex;flex-wrap:wrap;gap:8px}
+.svc-cap .c span{border:1px solid rgba(243,242,238,.4);background:rgba(12,13,12,.35);padding:6px 13px;border-radius:999px;font-size:13px}
+.svc-cap .o{align-self:flex-start;font-size:13px;letter-spacing:.06em;font-weight:600;border-bottom:1.5px solid var(--lilaT);padding:4px 0;color:#fff}
+.svc-cap.sw>*{animation:capin .7s cubic-bezier(.2,.75,.15,1) backwards}
+.svc-cap.sw>*:nth-child(2){animation-delay:.07s}.svc-cap.sw>*:nth-child(3){animation-delay:.14s}.svc-cap.sw>*:nth-child(4){animation-delay:.2s}
+@keyframes capin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* Flyer */
+.fly{position:relative;width:min(960px,96vw);max-height:90vh;overflow:auto;border-radius:calc(var(--r) + 6px);background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(74vh,720px)}
+.fly .fin{padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.fly .ftt{font-family:var(--serif);font-weight:400;font-size:clamp(42px,6.5vw,86px);line-height:.95;margin:0}
+.fly p{margin:0;max-width:620px;font-size:17px;color:#F3F2EE}
+.plink{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border:1.5px solid var(--lila);border-radius:999px;background:rgba(12,13,12,.35);color:#fff;font-size:14px;letter-spacing:.04em;font-weight:600;transition:background .3s,border-color .3s}
+.plink:hover{background:var(--lila)}
+.xcl{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;background:rgba(12,13,12,.55);color:#fff;border:1px solid rgba(243,242,238,.4);font:inherit;font-size:18px;cursor:pointer;z-index:2}
+/* Fichas */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.acard{background:var(--panel);border:0;border-radius:var(--r);overflow:hidden;padding:0;display:flex;flex-direction:column;text-align:left;font:inherit;color:var(--fg);cursor:pointer;transition:transform .35s ease,box-shadow .35s ease}
+.acard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.acard .ap{display:block;height:170px;background-size:cover;background-position:center;position:relative}
+.acard .ab{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1;border-top:3px solid var(--lila)}
+.acard .at{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.05;transition:color .3s}
+.acard:hover .at{color:var(--lilaT)}
+.bars{display:flex;gap:3px;align-items:flex-end}
+.bars span{width:4px;background:rgba(243,242,238,.22)}
+.bars .f{background:var(--fg)}
+.day{border-radius:50%;background:transparent;color:var(--ink);border:1px solid var(--ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.day[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.trow{display:grid;grid-template-columns:96px 14px 2fr 1fr 1.4fr 80px;align-items:center;gap:16px;padding:16px 0;border-top:1px solid rgba(12,13,12,.16)}
+.tnum{font-family:var(--serif);font-size:27px;line-height:1}
+.list{margin:0;padding:0;list-style:none}
+.list li{padding:14px 0;border-top:1px solid var(--line)}
+/* Galería */
+/* Galería: el passadís (scroll vertical = caminar en horizontal) */
+.cor{position:relative}
+.cor-pin{position:sticky;top:var(--hh,0px);height:calc(100vh - var(--hh,0px));height:calc(100svh - var(--hh,0px));overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;padding-block:clamp(16px,2.6vh,30px) clamp(20px,3.4vh,36px);--fh:clamp(210px,calc(100vh - var(--hh,0px) - 310px),500px);--fh:clamp(210px,calc(100svh - var(--hh,0px) - 310px),500px)}
+.cor-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+.cor-top b{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,56px);letter-spacing:0;color:var(--fg);font-variant-numeric:tabular-nums}
+.cor-top b i{font-style:italic;color:var(--lilaT);font-size:.5em;margin-left:6px}
+.cor-track{position:relative;flex:1;min-height:0;display:flex;align-items:center;gap:clamp(26px,4vw,64px);width:max-content;padding:0 max(16px,env(safe-area-inset-left,0px));will-change:transform;perspective:1200px}
+@media(min-width:900px){.cor-track{padding:0 max(56px,env(safe-area-inset-left,0px))}}
+.cf{position:relative;flex:0 0 auto;margin-bottom:46px;height:calc(var(--fh)*var(--sc,1));aspect-ratio:var(--ar,4/5);top:var(--off,0px);border:0;padding:0;background:transparent;color:var(--fg);font:inherit;text-align:left;cursor:pointer;transform:rotateY(calc(var(--sv,0)*-1deg))}
+.cf .door{width:100%;height:100%;--dx:16%;--dy:5%;--dt:420px}
+.cf .door .pic{width:124%;left:-12%;right:auto;translate:var(--px,0px) 0}
+.cf .cap{position:absolute;left:2px;top:calc(100% + 12px);font-family:var(--serif);font-size:clamp(20px,2vw,26px);line-height:1.05;white-space:nowrap}
+.cf .cap i{display:block;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.22em;color:var(--mut);margin-bottom:6px}
+.cor-bar{height:2px;background:rgba(243,242,238,.16);border-radius:2px;margin:6px max(16px,env(safe-area-inset-left,0px)) 0}
+@media(min-width:900px){.cor-bar{margin-inline:max(56px,env(safe-area-inset-left,0px))}}
+.cor-bar span{display:block;height:100%;width:100%;background:var(--lilaT);transform-origin:left;transform:scaleX(var(--cp,0))}
+html:not(.mo) .cor{height:auto!important}
+html:not(.mo) .cor-pin{position:static;height:auto;overflow:visible}
+html:not(.mo) .cor-track{overflow-x:auto;width:auto;padding-bottom:50px}
+input,select,textarea{box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(243,242,238,.5);color:var(--fg);font:inherit;height:50px;padding:0 12px}
+select{background:var(--bg)}
+textarea{height:auto;border:1px solid rgba(243,242,238,.5);border-radius:12px;padding:12px}
+label{font-size:13px;color:var(--mut)}
+.field{display:flex;flex-direction:column;gap:6px}
+footer.site{padding-block:40px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;font-size:14px;color:var(--mut)}
+.fab{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.fab-main{width:60px;height:60px;border-radius:50%;background:var(--lila);color:#fff;border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:background .3s,transform .3s}
+.fab-main:hover{background:var(--lilaD);transform:translateY(-2px)}
+.fab-it{display:flex;align-items:center;gap:12px;text-decoration:none}
+.fab-it .fl{background:var(--paper);color:var(--ink);font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.fab-it .fi{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+@media (prefers-reduced-motion: no-preference){
+ .fab-menu .fab-it{animation:fin .3s ease both}
+ .fab-menu .fab-it:nth-child(2){animation-delay:.07s}
+ @keyframes fin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+[hidden]{display:none!important}
+.ovl{position:fixed;inset:0;z-index:40;background:rgba(12,13,12,.82);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px))}
+:focus-visible{outline:2px solid var(--lilaT);outline-offset:2px}
+header.site :focus-visible,.light :focus-visible{outline-color:var(--lila)}
+@media(max-width:760px){header.site{position:static}}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+
+/* ===================== MOVIMENT · «les portes» ===================== */
+:root{--r2:30px;--hh:0px}
+/* Porta: una finestra estreta (arc) que s'obre fins al marc complet segons el scroll (--e: 0→1) */
+.door{--rt:22px;--rb:22px;--dx:30%;--dy:6%;--dt:900px;--db:0px;position:relative;display:block;overflow:hidden;
+ clip-path:inset(calc((1 - var(--e,1))*var(--dy)) calc((1 - var(--e,1))*var(--dx)) calc((1 - var(--e,1))*var(--dy)) calc((1 - var(--e,1))*var(--dx)) round calc(var(--rt) + (1 - var(--e,1))*var(--dt)) calc(var(--rt) + (1 - var(--e,1))*var(--dt)) calc(var(--rb) + (1 - var(--e,1))*var(--db)) calc(var(--rb) + (1 - var(--e,1))*var(--db)))}
+.door .pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-size:cover;background-position:center;display:block;max-width:none;translate:0 var(--py,0px);scale:calc(1.1 + .16*(1 - var(--e,1)))}
+.d-wide{--dx:20%;--dy:12%;--dt:70px;--db:70px;--rt:30px;--rb:30px}
+.vwrap video{scale:calc(1.06 + .14*(1 - var(--e,1)))}
+.vwrap .vcap{opacity:calc((var(--e,1) - .55)*2.4)}
+.d-keep{--rt:999px;--rb:6px;--dt:0px;--dx:22%;--dy:7%}
+/* Hero: queda fix i la secció següent el tapa com una cortina */
+.hpin{position:sticky;top:0;z-index:0}
+.hpin .hero{transform:scale(calc(1 - var(--hp,0)*.07));transform-origin:50% 0}
+.hpin .hvids{scale:calc(1 + var(--hp,0)*.1)}
+.hdim{position:absolute;inset:0;z-index:1;background:var(--bg);opacity:calc(var(--hp,0)*.8);pointer-events:none}
+.hero .hrow{z-index:2;transform:translate3d(0,calc(var(--hp,0)*-9vh),0);opacity:calc(1 - var(--hp,0)*1.35)}
+#inici-club{position:relative;z-index:1;background:var(--bg);border-radius:var(--r2) var(--r2) 0 0;box-shadow:0 -46px 90px rgba(0,0,0,.6)}
+/* Titulars: paraula a paraula, pujant des d'una màscara */
+.mo [data-split] .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.12em .1em .16em;margin:-.12em -.1em -.16em}
+.mo [data-split] .wi{display:inline-block;transform:translate3d(0,118%,0);transition:transform 1.05s cubic-bezier(.2,.75,.15,1) calc(var(--i,0)*70ms)}
+.mo [data-split].in .wi{transform:none}
+/* Llistes: la línia es dibuixa i el text puja */
+.mo .rvl li{position:relative;border-top-color:transparent!important;opacity:0;transform:translateY(14px);transition:opacity .9s ease calc(var(--i,0)*90ms),transform .9s cubic-bezier(.2,.75,.15,1) calc(var(--i,0)*90ms)}
+.mo .rvl li::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--ln,var(--line));transform:scaleX(0);transform-origin:left;transition:transform 1.3s cubic-bezier(.2,.75,.15,1) calc(var(--i,0)*90ms)}
+.mo .rvl.in li{opacity:1;transform:none}
+.mo .rvl.in li::before{transform:none}
+/* Botons: el text roda en passar-hi per sobre */
+.rl{display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em;vertical-align:middle}
+.rl>span{display:block;transition:transform .55s cubic-bezier(.2,.75,.15,1)}
+@media(hover:hover){.btn:hover .rl>span{transform:translateY(-100%)}}
+/* Indicador de sala */
+#room{position:fixed;left:calc(38px + env(safe-area-inset-left,0px));bottom:calc(28px + env(safe-area-inset-bottom,0px));z-index:24;display:none;align-items:center;gap:12px;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#fff;mix-blend-mode:difference;pointer-events:none;opacity:0;transition:opacity .5s;transform:rotate(-90deg);transform-origin:left bottom}
+@media(min-width:900px){.mo #room{display:flex}}
+#room.on{opacity:1}
+#room i{display:block;width:34px;height:1px;background:currentColor}
+#room .rt{display:block;overflow:hidden;height:1.5em;line-height:1.5em;white-space:nowrap}
+#room .rt span{display:block}
+#room .rt span.go{animation:rin .7s cubic-bezier(.2,.75,.15,1)}
+@keyframes rin{from{transform:translateY(105%)}to{transform:none}}
+/* Cursor contextual */
+#cur{position:fixed;left:0;top:0;z-index:70;width:88px;height:88px;margin:-44px 0 0 -44px;border-radius:50%;background:var(--lila);color:#fff;display:none;align-items:center;justify-content:center;text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;pointer-events:none;opacity:0;will-change:transform}
+.mo.fine #cur{display:flex}
+.mo.fine [data-cur],.mo.fine [data-cur] *{cursor:none!important}
+/* Porta entre pàgines */
+#gate{position:fixed;inset:0;z-index:60;background:var(--lila);color:#fff;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;box-sizing:border-box;padding:clamp(22px,3.2vw,44px) max(clamp(22px,4vw,56px),env(safe-area-inset-left,0px));pointer-events:none;visibility:hidden;clip-path:inset(100% 0 0 0)}
+#gate .gtop,#gate .gbot{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:12px;letter-spacing:.3em;text-transform:uppercase}
+#gate .glogo{height:clamp(34px,4vw,52px);width:auto;filter:brightness(0) invert(1)}
+#gate .gmid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+#gate .gbot{opacity:.85;border-top:1px solid rgba(255,255,255,.4);padding-top:16px}
+@media(max-width:600px){#gate .gtop,#gate .gbot{letter-spacing:.18em;font-size:11px}#gate .gbot{flex-direction:column;align-items:flex-start;gap:4px}}
+#gate .gn{font-size:12px;letter-spacing:.32em;text-transform:uppercase;opacity:.85}
+#gate .gt{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(64px,13vw,190px);line-height:1}
+/* Modals: entren amb suavitat */
+@media (prefers-reduced-motion: no-preference){
+ .ovl:not([hidden]){animation:ovin .4s ease}
+ .ovl:not([hidden])>*{animation:ovup .55s cubic-bezier(.2,.75,.15,1)}
+ @keyframes ovin{from{opacity:0}to{opacity:1}}
+ @keyframes ovup{from{opacity:0;transform:translateY(26px) scale(.985)}to{opacity:1;transform:none}}
+}
+.cf.bw .pic{filter:grayscale(1) contrast(1.06);transition:filter .7s ease}
+.cf.bw:hover .pic{filter:none}
+.mo .acard.rv{opacity:1;transform:none;transition:transform .35s ease,box-shadow .35s ease}
+.mo .acard.rv:not(.in){opacity:0;transform:translateY(30px)}
+.mo .acard.rv.in{animation:cin .85s cubic-bezier(.2,.7,.2,1) calc(var(--i,0)*70ms) backwards}
+@keyframes cin{from{opacity:0;transform:translateY(34px) scale(.98)}to{opacity:1;transform:none}}
+
+/* ===================== CAPÇALERA · MENÚ ===================== */
+header.site{flex-wrap:nowrap;gap:12px 28px;padding-block:12px}
+header.site>a:first-child img{height:48px}
+nav.main{flex-wrap:nowrap;gap:0 clamp(24px,2.9vw,56px);font-family:var(--sans);font-size:clamp(18px,1.6vw,27px);font-weight:500;letter-spacing:-.01em;line-height:1;white-space:nowrap}
+nav.main a{padding:16px 0}
+nav.main a::after{bottom:10px}
+nav.main a.on{color:var(--lila)}
+.hact{display:flex;align-items:center;gap:8px 16px;font-size:13px;flex:none}
+.burger,.mnu{display:none}
+@media(max-width:1200px){
+ header.site{position:sticky;padding-block:8px}
+ header.site>a:first-child img{height:38px}
+ nav.main,.hact{display:none}
+ .burger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:48px;height:48px;margin-left:auto;padding:0;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .3s,color .3s}
+ .burger span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform .55s cubic-bezier(.76,0,.24,1)}
+ html.menu-open .burger{background:var(--ink);color:var(--paper)}
+ html.menu-open .burger span:nth-child(1){transform:translateY(3.75px) rotate(45deg)}
+ html.menu-open .burger span:nth-child(2){transform:translateY(-3.75px) rotate(-45deg)}
+ .mnu{display:flex;position:fixed;inset:0;z-index:19;flex-direction:column;justify-content:space-between;gap:28px;box-sizing:border-box;padding:calc(env(safe-area-inset-top,0px) + 84px) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--bg);color:var(--fg);overflow-y:auto;visibility:hidden;clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.76,0,.24,1),visibility 0s linear .7s}
+ html.menu-open .mnu{visibility:visible;clip-path:inset(0);transition:clip-path .7s cubic-bezier(.76,0,.24,1),visibility 0s}
+ html.menu-open,html.menu-open body{overflow:hidden}
+ html.menu-open .fab{display:none}
+}
+.mnu nav{display:flex;flex-direction:column}
+.mnu nav a{display:flex;align-items:baseline;gap:16px;padding:10px 0 8px;border-top:1px solid var(--line);font-family:var(--sans);font-weight:500;letter-spacing:-.035em;font-size:clamp(42px,12.5vw,84px);line-height:1;opacity:0;transform:translateY(46px);transition:opacity .5s ease,transform .5s ease}
+html.menu-open .mnu nav a{opacity:1;transform:none;transition:opacity .7s ease calc(.25s + var(--i,0)*70ms),transform .9s cubic-bezier(.2,.75,.15,1) calc(.25s + var(--i,0)*70ms)}
+.mnu nav a .mn{font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--lilaT);min-width:28px}
+.mnu nav a.on .mt{color:var(--lilaT)}
+.mnu .mb{display:flex;flex-direction:column;gap:18px;opacity:0;transition:opacity .4s ease}
+html.menu-open .mnu .mb{opacity:1;transition:opacity .8s ease .55s}
+.mnu .mr{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.mnu .mr .btn{flex:1 1 180px}
+.mnu .mi{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:14px;color:var(--mut)}
+.mnu .lg{display:flex;gap:14px;font-size:14px;letter-spacing:.1em}
+.mnu .lg span:first-child{border-bottom:1px solid var(--fg)}
+@media (prefers-reduced-motion: reduce){.mnu,.mnu nav a,.mnu .mb{transition:none!important}}
+
+/* ===================== GALERIA · FILTRES ===================== */
+.cor-pin{--fh:clamp(190px,calc(100vh - var(--hh,0px) - 372px),500px);--fh:clamp(190px,calc(100svh - var(--hh,0px) - 372px),500px)}
+.cor-fil{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-block:10px 4px}
+.cor-fil::-webkit-scrollbar{display:none}
+.cor-fil .chip{flex:none;min-height:40px;padding:0 16px;font-size:14px}
+.cor-fil .chip sup{font-size:10px;opacity:.6;margin-left:-3px;letter-spacing:.04em}
+.cor-track{min-width:100%;justify-content:center}
+.cor-track.swap .cf{animation:cfin 1s cubic-bezier(.2,.75,.15,1) backwards;animation-delay:calc(var(--n,0)*90ms)}
+@keyframes cfin{from{opacity:0;translate:90px 0}to{opacity:1;translate:0 0}}
+
+/* ===================== PREUS ===================== */
+.qcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.qc{background:var(--panel);border-radius:var(--r);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:22px;min-height:380px}
+.qc .eb{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
+.qc h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.2vw,46px);line-height:1;margin:0;min-height:2em}
+@media(max-width:899px){.qc h2{min-height:0}}
+.qc .pp{font-family:var(--serif);font-size:clamp(56px,6vw,84px);line-height:.95;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;font-variant-numeric:tabular-nums}
+.qc .pp small{font-family:var(--sans);font-size:15px;color:var(--mut)}
+.qc .pp em{font-style:italic;color:var(--lilaT)}
+.qc p{margin:0;color:var(--soft);font-size:16px}
+.qc .btn{margin-top:auto;align-self:flex-start}
+.qmut{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 24px;margin-top:16px;padding:20px 4px 0;border-top:1px solid var(--line);color:var(--soft)}
+.qmut b{font-family:var(--serif);font-weight:400;font-size:30px;color:var(--fg)}
+.light .chip{color:var(--ink);border-color:rgba(12,13,12,.4)}
+.light .chip:hover{color:var(--lila);border-color:var(--lila)}
+.light .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ptabs{display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;padding:3px;gap:2px;margin-left:auto}
+.seg button{border:0;background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:600;min-height:40px;padding:0 20px;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.seg button[aria-pressed="true"]{background:var(--lila);color:#fff}
+.seg.off{visibility:hidden}
+.pnl{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.5fr);gap:32px clamp(32px,6vw,96px);margin-top:44px;align-items:start}
+@media(max-width:899px){.pnl{grid-template-columns:1fr}}
+.pnl h3{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5vw,72px);line-height:.95;margin:0}
+.pnl .pd{margin:14px 0 0;color:var(--ink2);font-size:17px;max-width:360px}
+.pnl .pn{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--ink2);max-width:380px}
+.pnl .pn li{padding-left:16px;position:relative}
+.pnl .pn li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--lila)}
+.pnl .psub{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.pnl .psub .chip{min-height:38px;padding:0 15px;font-size:14px}
+.pt{margin-bottom:38px}
+.pt:last-child{margin-bottom:0}
+.pt h4{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#5A5A55}
+.pt h4 .tg{background:var(--ink);color:var(--paper);padding:4px 11px;border-radius:999px;letter-spacing:.1em}
+.pr{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(var(--c,2),minmax(0,1fr));gap:0 12px;align-items:baseline;padding:15px 0;border-top:1px solid rgba(12,13,12,.2)}
+.pt .pr:last-child{border-bottom:1px solid rgba(12,13,12,.2)}
+.pr.hd{padding:10px 0;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5A5A55;font-weight:600;border-top:1.5px solid var(--ink)}
+.pr .l{font-size:18px;font-weight:500}
+.pr .l small{display:block;font-size:13px;font-weight:400;color:var(--ink2);margin-top:3px}
+.pr .v{font-family:var(--serif);font-size:clamp(28px,3vw,40px);line-height:1;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pr .v em.am{font-style:italic;color:var(--lila)}
+.pr .v small{font-family:var(--sans);font-size:13px;color:var(--ink2);margin-left:3px}
+.pr.hd .v{font-family:var(--sans);font-size:12px;text-align:right;white-space:normal}
+.pr.hd .v small{display:block;margin:2px 0 0;text-transform:none;letter-spacing:0;font-weight:400}
+.pnl .res{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;padding:16px 18px;background:rgba(160,32,112,.09);border-radius:14px;margin-top:6px}
+.pnl .res b{font-family:var(--serif);font-weight:400;font-size:30px;color:var(--lila)}
+@media(max-width:520px){.pr{gap:0 8px}.pr .l{font-size:15px}.pr .v{font-size:24px}.seg{margin-left:0}}
+.mo .pnl .pr{animation:pup .7s cubic-bezier(.2,.75,.15,1) backwards;animation-delay:calc(var(--i,0)*40ms)}
+@keyframes pup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.nt{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 56px;margin:0;padding:0;list-style:none}
+.nt li{padding:22px 0;display:flex;flex-direction:column;gap:6px}
+.nt b{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1}
+.nt span{color:var(--mut);font-size:16px}
+.av li{display:grid;grid-template-columns:minmax(150px,.7fr) 2fr;gap:6px 24px;padding:20px 0;align-items:baseline}
+.av b{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.4vw,34px);line-height:1.05}
+.av span{color:var(--soft);font-size:17px}
+@media(max-width:620px){.av li{grid-template-columns:1fr}}
+
+/* ===================== HORARI REAL ===================== */
+.day{width:58px;height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;line-height:1;position:relative}
+.day small{font-size:11px;font-weight:400;opacity:.7}
+.day.today::after{content:"";position:absolute;top:7px;right:12px;width:6px;height:6px;border-radius:50%;background:var(--lila)}
+.btn-pdf{background:transparent;color:var(--ink);border:1.5px solid var(--ink);gap:10px}
+.btn-pdf:hover{background:var(--ink);color:var(--paper)}
+.hb{display:flex;align-items:baseline;gap:14px;padding:22px 0 8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#5A5A55}
+.hb i{flex:1;height:1px;background:rgba(12,13,12,.2)}
+.hr{display:grid;grid-template-columns:128px 14px minmax(0,2fr) minmax(0,1fr) minmax(0,1.2fr);align-items:center;gap:16px;padding:13px 0;border-top:1px solid rgba(12,13,12,.14)}
+.hr .tn{font-family:var(--serif);font-size:25px;line-height:1;font-variant-numeric:tabular-nums}
+.hr .tn small{font-family:var(--sans);font-size:13px;color:#6B6B66;margin-left:4px}
+.hr .an{font-size:18px;font-weight:500}
+.hr .an em{font-style:normal;font-size:11px;font-weight:600;color:var(--lila);border:1px solid var(--lila);border-radius:999px;padding:1px 7px;margin-left:8px;vertical-align:2px}
+.hr .rm,.hr .ins{font-size:14px;color:var(--ink2)}
+.hr .ins{color:#6B6B66}
+@media(max-width:700px){.hr{grid-template-columns:96px 12px minmax(0,1fr);gap:3px 12px;padding:12px 0}.hr .tn{grid-column:1;grid-row:1}.hr>span[aria-hidden]{grid-column:2;grid-row:1}.hr .an{grid-column:3;grid-row:1}.hr .rm{grid-column:3;grid-row:2;font-size:13px}.hr .ins{grid-column:3;grid-row:3;font-size:13px}.hr .tn{font-size:22px}.hr .tn small{display:none}.hr .an{font-size:17px}}
+
+/* ===================== HOME · GALERIA · PREUS · FINAL ===================== */
+.hgh{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 64px}
+.hx{position:relative;z-index:1;background:var(--bg);padding-block:96px 104px;border-top:1px solid var(--line);overflow:hidden}
+.hxt{--g:max(16px,env(safe-area-inset-left,0px));--H:clamp(430px,76vh,860px);--W:clamp(290px,68vw,1080px);display:flex;align-items:flex-start;gap:clamp(18px,3.2vw,56px);overflow-x:auto;overflow-y:hidden;cursor:grab;padding:56px var(--g) 36px;scrollbar-width:none;-webkit-user-select:none;user-select:none;overscroll-behavior-x:contain}
+@media(min-width:900px){.hxt{--g:max(56px,env(safe-area-inset-left,0px))}}
+.hxt::-webkit-scrollbar{display:none}
+.hxt.drag{cursor:grabbing}
+.hxi{flex:0 0 auto;display:block;position:relative;width:calc(var(--W)*var(--w,1));margin-top:calc(var(--H)*var(--mt,0));color:#fff}
+.hxi:nth-child(1){--w:1;--h:1;--mt:0}
+.hxi:nth-child(2){--w:.84;--h:.76;--mt:.22}
+.hxi:nth-child(3){--w:.72;--h:.94;--mt:.04}
+.hxi:nth-child(4){--w:.92;--h:.7;--mt:.3}
+.hxi:nth-child(5){--w:1;--h:.98;--mt:.02}
+.hxf{display:block;position:relative;height:calc(var(--H)*var(--h,1));border-radius:calc(var(--r) + 6px);overflow:hidden;background:var(--panel);transform:scale(calc(.9 + .1*var(--f,1)));transform-origin:50% 50%;will-change:transform}
+.hxp{position:absolute;top:0;left:-9%;width:118%;height:100%;max-width:none;object-fit:cover;display:block;translate:var(--px,0px) 0;filter:grayscale(calc(1 - .85*var(--f,1))) brightness(calc(.55 + .45*var(--f,1)))}
+.hxf::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(transparent,rgba(12,13,12,.7));pointer-events:none}
+.hxn{position:absolute;top:clamp(16px,2.4vw,34px);left:clamp(18px,2.6vw,38px);z-index:1;font-family:var(--serif);font-style:italic;font-size:clamp(40px,5vw,84px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.75)}
+.hxc{position:absolute;left:clamp(18px,2.6vw,38px);right:20px;bottom:clamp(16px,2.4vw,34px);z-index:1;opacity:calc(.25 + .75*var(--f,1));translate:0 calc((1 - var(--f,1))*14px)}
+.hxc b{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,54px);line-height:1;text-shadow:0 2px 16px rgba(0,0,0,.45)}
+.hxk{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);font-variant-numeric:tabular-nums;min-width:64px}
+.hxk b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:0;color:var(--fg)}
+@media(prefers-reduced-motion:reduce){.hxf{transform:none}.hxp{filter:grayscale(.2)}.hxc{opacity:1;translate:none}}
+.hgc{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;margin-top:56px;align-items:start}
+.hgi{position:relative;display:block;translate:0 var(--d,0px)}
+.hgi .door{width:100%;--dx:26%;--dy:8%}
+.hgi .pic{filter:grayscale(1) contrast(1.06);transition:filter .8s ease}
+.hgi:hover .pic{filter:none}
+.hgi .cp{display:flex;justify-content:space-between;gap:12px;margin-top:12px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+.hgi .cp b{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:0;text-transform:none;color:var(--fg)}
+.hg1{grid-column:1/5}.hg1 .door{aspect-ratio:3/4}
+.hg2{grid-column:5/10;margin-top:12vw}.hg2 .door{aspect-ratio:3/2}
+.hg3{grid-column:10/13}.hg3 .door{aspect-ratio:1/1}
+.hg4{grid-column:2/6;margin-top:-4vw}.hg4 .door{aspect-ratio:4/5}
+.hg5{grid-column:7/13;margin-top:2vw}.hg5 .door{aspect-ratio:16/10}
+@media(max-width:760px){.hgc{grid-template-columns:repeat(6,minmax(0,1fr));gap:22px 12px}.hg1{grid-column:1/5}.hg2{grid-column:2/7;margin-top:0}.hg3{grid-column:1/4}.hg4{grid-column:4/7;margin-top:30px}.hg5{grid-column:1/7;margin-top:0}}
+.hp{padding-block:96px;display:flex;flex-wrap:wrap;gap:48px clamp(40px,7vw,120px);align-items:flex-start}
+.hpl{flex:1 1 320px;display:flex;flex-direction:column;gap:26px}
+@media(min-width:900px){.hpl,.stk{position:sticky;top:calc(var(--hh,0px) + 40px)}}
+.hpr{flex:1.5 1 420px;margin:0;padding:0;list-style:none;border-bottom:1px solid rgba(12,13,12,.3);--ln:rgba(12,13,12,.3)}
+.hpr li{padding:0}
+.hpr a{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding:22px 0;flex-wrap:wrap;transition:padding .5s cubic-bezier(.2,.75,.15,1)}
+@media(hover:hover){.hpr a:hover{padding-left:16px}}
+.hpr .tt{font-family:var(--serif);font-size:clamp(30px,3.2vw,46px);line-height:1}
+.hpr .tt small{display:block;font-family:var(--sans);font-size:13px;color:#5A5A55;margin-top:6px;letter-spacing:.02em}
+.hpr .pv{font-family:var(--serif);font-size:clamp(28px,3vw,42px);line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.hpr .pv small{font-family:var(--sans);font-size:13px;color:#5A5A55;margin:0 2px}
+.hpr .pv em{font-style:italic;color:var(--lila)}
+.door.fin{display:flex;align-items:flex-end;min-height:min(90vh,780px);--dx:18%;--dy:10%;--dt:80px;--db:80px;--rt:30px;--rb:30px}
+.fin::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,13,12,.1) 0%,rgba(12,13,12,.35) 40%,rgba(12,13,12,.88) 100%)}
+.fin-in{position:relative;z-index:1;width:100%;box-sizing:border-box;padding:clamp(24px,5vw,72px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px 56px;opacity:calc((var(--e,1) - .5)*2.2)}
+.fin-in h2{margin:0}
+.fin-in .fr{flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;gap:22px}
+.fin-in .fr p{margin:0;color:var(--soft);font-size:18px}
+.fin-in .ph2{font-size:14px;color:var(--soft);letter-spacing:.04em}
+
+</style>
+
+<header class="site gut">
+  <a href="#inici" style="display:flex;align-items:center;gap:12px;padding:6px 0"><img src="img/logo.png" alt="Espai Wellness" style="height:46px;width:auto"></a>
+  <nav class="main" aria-label="Principal">
+    <a href="#inici" data-nav="inici">Inici</a>
+    <a href="#serveis" data-nav="serveis">Serveis</a>
+    <a href="#galeria" data-nav="galeria">Galeria</a>
+    <a href="#preus" data-nav="preus">Preus</a>
+    <a href="#contacte" data-nav="contacte">Contacte</a>
+  </nav>
+  <div class="hact">
+    <span style="display:flex;gap:8px;letter-spacing:.08em"><span style="border-bottom:1px solid var(--ink)">CA</span><a href="#inici" style="color:#6B6B66">ES</a></span>
+    <a class="btn btn-priv" href="https://espaiwellness.poliwincloud.com/" style="min-height:44px;padding:0 20px">Àrea privada</a>
+    <button type="button" class="btn btn-a js-vis" style="min-height:44px;padding:0 20px">Concerta una visita</button>
+  </div>
+  <button type="button" class="burger" id="burger" aria-label="Obre el menú" aria-expanded="false" aria-controls="mnu"><span></span><span></span></button>
+</header>
+<div class="mnu" id="mnu" aria-hidden="true">
+  <nav aria-label="Menú">
+    <a href="#inici" data-nav="inici" style="--i:0"><span class="mn">01</span><span class="mt">Inici</span></a>
+    <a href="#serveis" data-nav="serveis" style="--i:1"><span class="mn">02</span><span class="mt">Serveis</span></a>
+    <a href="#galeria" data-nav="galeria" style="--i:2"><span class="mn">03</span><span class="mt">Galeria</span></a>
+    <a href="#preus" data-nav="preus" style="--i:3"><span class="mn">04</span><span class="mt">Preus</span></a>
+    <a href="#contacte" data-nav="contacte" style="--i:4"><span class="mn">05</span><span class="mt">Contacte</span></a>
+  </nav>
+  <div class="mb">
+    <div class="mr"><a class="btn btn-priv" href="https://espaiwellness.poliwincloud.com/">Àrea privada</a><button type="button" class="btn btn-a js-vis">Concerta una visita</button></div>
+    <div class="mi"><span class="lg"><span>CA</span><a href="#inici" style="color:var(--mut)">ES</a></span><span>Passeig Conca del Besòs, 12 · Granollers</span><span>93 861 87 04</span></div>
+  </div>
+</div>
+
+<!-- ============ INICI ============ -->
+<main id="p-inici" class="page">
+  <div class="wrapin hpin">
+    <section class="hero">
+      <div class="hvids" id="hvids" data-len="80" aria-hidden="true">
+        <video class="hvid" id="hv0" muted playsinline preload="auto"></video>
+        <video class="hvid" id="hv1" muted playsinline preload="auto"></video>
+      </div>
+      <div class="hsh" aria-hidden="true"></div>
+      <div class="hdim" aria-hidden="true"></div>
+      <button type="button" class="hsnd" id="hsnd" aria-pressed="false"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path id="hsnd-w" d="m22 9-6 6M16 9l6 6"/></svg><span>Activa el so</span></button>
+      <div class="hprog" aria-hidden="true"><span id="hprog"></span></div>
+      <div class="hrow">
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <span class="eyebrow" style="color:var(--lilaT)">Esport · Wellness · Pàdel — Granollers</span>
+          <h1 class="h1">El teu gimnàs<br><em>de referència.</em></h1>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;max-width:380px">
+          <p style="margin:0;font-size:18px;color:var(--soft)">Fitness, aigua, spa i pàdel en un sol club. El centre de referència del Vallès Oriental, pensat perquè hi vulguis tornar cada dia.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="btn btn-a js-vis">Concerta una visita</button><a class="btn btn-o" href="#inici" onclick="document.getElementById('inici-club').scrollIntoView({behavior:'smooth'});return false">Descobreix el club</a></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="inici-club">
+    <div class="gut" style="padding-block:72px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <h2 class="h2" data-split>Un recorregut<br><span class="out">pel club</span></h2>
+      <p data-rev style="margin:0;max-width:360px;color:var(--mut)">Cinc espais, un sol lloc. Baixa i mira'ls d'un en un: cada capítol s'obre com una porta i queda fix mentre arriba el següent.</p>
+    </div>
+    <div id="tour"></div>
+  </section>
+
+  <div class="wrapin" style="position:relative;z-index:1;background:var(--bg)" data-room="El club en moviment">
+    <div class="vwrap door d-wide" data-door data-from=".98" data-to=".3">
+      <video id="clubv" src="img/club-clips.mp4" autoplay muted loop playsinline preload="auto" poster="img/club-poster.jpg" aria-label="El club en moviment"></video>
+      <span class="vcap">El club en moviment · 1 minut a dins l'Espai</span>
+    </div>
+  </div>
+
+  <section class="gut" data-room="Els serveis principals" style="position:relative;z-index:1;background:var(--bg);padding-block:88px 56px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 64px">
+      <h2 class="h2" data-split>Els serveis<br><em>principals</em></h2>
+      <p data-rev style="margin:0;max-width:320px;color:var(--mut)">Agafa el carrusel i arrossega'l: les 24 activitats dirigides del club, una a una. Prem-ne qualsevol per obrir la seva fitxa.</p>
+    </div>
+  </section>
+  <div style="position:relative;z-index:1;background:var(--bg)"><div class="eq" id="eq" data-cur="Arrossega" aria-label="Activitats dirigides: carrusel"></div></div>
+  <div class="gut eqc" style="position:relative;z-index:1;background:var(--bg)">
+    <div class="eqp" aria-hidden="true"><span id="eq-bar"></span></div>
+    <div class="eqb"><button type="button" id="eq-prev" aria-label="Anteriors">←</button><button type="button" id="eq-next" aria-label="Següents">→</button></div>
+  </div>
+  <div class="gut" style="position:relative;z-index:1;background:var(--bg);padding-block:32px 96px"><a class="btn btn-o" href="#serveis">Tots els serveis</a></div>
+
+  <section class="hx" data-room="La galeria">
+    <div class="gut">
+      <div class="hgh">
+        <h2 class="h2" data-split>L'Espai,<br><em>en imatges</em></h2>
+        <div data-rev style="display:flex;flex-direction:column;align-items:flex-start;gap:22px;max-width:360px"><p style="margin:0;color:var(--mut)">Les sales, l'aigua, la terrassa i la gent que els dona vida. Arrossega per passejar-hi; la resta, al passadís de la galeria.</p><a class="btn btn-o" href="#galeria">Veure la galeria</a></div>
+      </div>
+    </div>
+    <div class="hxt" id="hx" data-cur="Arrossega" aria-label="L'Espai en imatges: carrusel" data-rev>
+      <a class="hxi" href="#galeria" draggable="false"><span class="hxf"><img class="hxp" src="img/terrassa.jpg" alt="La terrassa, des de l'aire" draggable="false"  decoding="async"><span class="hxn">01</span><span class="hxc"><b>La terrassa</b></span></span></a>
+      <a class="hxi" href="#galeria" draggable="false"><span class="hxf"><img class="hxp" src="img/piscina.jpg" alt="Piscina interior climatitzada" draggable="false"  decoding="async"><span class="hxn">02</span><span class="hxc"><b>Piscina interior</b></span></span></a>
+      <a class="hxi" href="#galeria" draggable="false"><span class="hxf"><img class="hxp" src="img/fitness.jpg" alt="Sala fitness" draggable="false" loading="lazy" decoding="async"><span class="hxn">03</span><span class="hxc"><b>Sala fitness</b></span></span></a>
+      <a class="hxi" href="#galeria" draggable="false"><span class="hxf"><img class="hxp" src="img/rest2.jpg" alt="El restaurant" draggable="false" loading="lazy" decoding="async"><span class="hxn">04</span><span class="hxc"><b>El restaurant</b></span></span></a>
+      <a class="hxi" href="#galeria" draggable="false"><span class="hxf"><img class="hxp" src="img/dirigides-sala.jpg" alt="Sala d'activitats dirigides" draggable="false" loading="lazy" decoding="async"><span class="hxn">05</span><span class="hxc"><b>Activitats dirigides</b></span></span></a>
+    </div>
+    <div class="gut"><div class="eqc" style="padding-block:8px 0">
+      <span class="hxk"><b id="hx-n">01</b> / 05</span>
+      <div class="eqp" aria-hidden="true"><span id="hx-bar"></span></div>
+      <div class="eqb"><button type="button" id="hx-prev" aria-label="Anterior">←</button><button type="button" id="hx-next" aria-label="Següent">→</button></div>
+    </div></div>
+  </section>
+
+  <section class="light" data-room="Els preus" style="position:relative;z-index:1">
+    <div class="gut hp">
+      <div class="hpl">
+        <h2 class="h2" data-split>Les nostres<br><em>tarifes</em></h2>
+        <p data-rev style="margin:0;font-size:18px;color:var(--ink2);max-width:360px">Un tast de les tarifes del club. La resta, a la pàgina de tarifes.</p>
+        <div data-rev style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn btn-k" href="#preus">Veure totes les tarifes</a></div>
+      </div>
+      <ul class="list rvl hpr">
+        <li><a href="#preus"><span class="tt">Quota de soci<small>Matí o full · te l'expliquem en una visita</small></span><span class="pv"><em>A mida</em></span></a></li>
+        <li><a href="#preus"><span class="tt">Pilates Reformer<small>Socis · 1 classe per setmana</small></span><span class="pv"><small>des de</small><span data-count="58">58</span>,00 <small>€ / mes</small></span></a></li>
+        <li><a href="#preus"><span class="tt">Natació adults<small>Socis · 1 dia per setmana</small></span><span class="pv"><small>des de</small><span data-count="48">48</span>,70 <small>€ / mes</small></span></a></li>
+        <li><a href="#preus"><span class="tt">Entrenament personal<small>Socis · sessió de 30 minuts</small></span><span class="pv"><small>des de</small><span data-count="23">23</span>,95 <small>€ / sessió</small></span></a></li>
+        <li><a href="#preus"><span class="tt">Ludoteca<small>De 3 a 13 anys · de dilluns a divendres</small></span><span class="pv"><span data-count="6">6</span>,50 <small>€ / dia</small></span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrapin" style="position:relative;z-index:1;background:var(--bg);padding-top:12px" data-room="Fes-te soci">
+    <div class="door fin d-wide" data-door data-from=".98" data-to=".22">
+      <img class="pic" src="img/padel.jpg" alt="" loading="lazy" decoding="async">
+      <div class="fin-in">
+        <div style="display:flex;flex-direction:column;gap:18px;flex:2 1 420px;min-width:0">
+          <span class="eyebrow" style="color:var(--lilaT)">Fes-te soci</span>
+          <h2 class="h1" data-split style="font-size:clamp(46px,8.4vw,132px)">Comença<br><em>per una visita.</em></h2>
+        </div>
+        <div class="fr">
+          <p>T'ensenyem el club, t'escoltem i et proposem la quota que encaixa amb tu. Sense compromís.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="btn btn-a js-vis">Concerta una visita</button><a class="btn btn-o" href="#preus">Veure preus</a></div>
+          <span class="ph2">93 861 87 04 · 645 61 94 94</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="gut" style="position:relative;z-index:1;background:var(--bg);padding-block:80px 0;display:flex;flex-wrap:wrap;gap:48px 80px;justify-content:space-between;border-top:1px solid var(--line)">
+    <form style="flex:2 1 360px;max-width:520px;display:flex;flex-direction:column;gap:18px">
+      <h2 class="serif" style="margin:0;font-size:44px;line-height:1">Espai News</h2>
+      <label for="nl">Novetats, tornejos i propostes del club, un cop al mes.</label>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <input id="nl" type="email" placeholder="El teu correu electrònic" style="flex:1 1 220px">
+        <button type="submit" class="btn btn-a">Subscriu-m'hi</button>
+      </div>
+      <p id="nl-ok" hidden style="margin:0;color:var(--lilaT)">Gràcies! Ja formes part de la nostra llista; et farem arribar les novetats del club.</p>
+    </form>
+    <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-size:15px"><span class="eyebrow" style="color:var(--mut);font-size:12px">Horari</span><span>Dilluns a divendres · 6:00 – 23:00</span><span>Caps de setmana i festius · 8:00 – 21:30</span></div>
+    <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:8px;font-size:15px"><span class="eyebrow" style="color:var(--mut);font-size:12px">Troba'ns</span><a href="https://maps.app.goo.gl/WSjPUjTjzZKkKE4n8">Passeig Conca del Besòs, 12<br>08403 Granollers</a><span>93 861 87 04</span><a href="#contacte" style="color:var(--lilaT)">Com arribar-hi →</a></div>
+  </section>
+</main>
+
+<!-- ============ SERVEIS ============ -->
+<main id="p-serveis" class="page">
+  <section class="gut" style="padding-block:72px 36px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 80px">
+    <h1 class="h1" data-split style="font-size:clamp(48px,7vw,110px)">Els nostres<br><em>serveis</em></h1>
+    <div data-rev style="display:flex;flex-direction:column;gap:20px;max-width:400px">
+      <p style="margin:0;color:var(--mut)">Tot el que pots fer a l'Espai. Obre qualsevol servei per veure'n la fitxa, i la seva pàgina per anar al detall.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="chip" href="#serveis" onclick="document.getElementById('dirigides').scrollIntoView({behavior:'smooth'});return false">Activitats dirigides</a>
+        <a class="chip" href="#serveis" onclick="document.getElementById('horari').scrollIntoView({behavior:'smooth'});return false">Horari</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="svc" class="gut" data-room="Serveis" style="padding-bottom:88px"></section>
+
+  <section class="gut" data-room="Activitats dirigides" style="padding-bottom:36px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 80px">
+    <h2 id="dirigides" class="h2" data-split>Activitats<br><span class="out">dirigides</span></h2>
+    <p data-rev style="margin:0;max-width:380px;color:var(--mut)">Les 24 modalitats del club, cadascuna amb la seva fitxa. Filtra per tipus i intensitat.</p>
+  </section>
+
+  <section class="gut" style="padding-bottom:28px;display:flex;flex-wrap:wrap;gap:20px 56px;border-bottom:1px solid var(--line)">
+    <div style="display:flex;flex-direction:column;gap:10px"><span class="eyebrow" style="font-size:12px;color:var(--mut)">Tipus</span><div id="f-cat" style="display:flex;flex-wrap:wrap;gap:8px"></div></div>
+    <div style="display:flex;flex-direction:column;gap:10px"><span class="eyebrow" style="font-size:12px;color:var(--mut)">Intensitat <span style="letter-spacing:.04em;text-transform:none;opacity:.8">(només fitxes)</span></span><div id="f-int" style="display:flex;flex-wrap:wrap;gap:8px"></div></div>
+    <span id="f-count" style="margin-left:auto;align-self:flex-end;font-size:14px;color:var(--mut);padding-bottom:12px"></span>
+  </section>
+  <section class="gut" style="padding-block:32px 96px"><div id="grid" class="cards"></div><p id="grid-empty" hidden style="margin:0;padding:40px 0;color:var(--mut)">No hi ha cap activitat amb aquests filtres. Prova una altra combinació.</p></section>
+
+  <section id="horari" class="light" data-room="Horari">
+    <div class="gut" style="padding-block:88px">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 64px;margin-bottom:36px">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="align-self:flex-start;font-size:11px;letter-spacing:.16em;text-transform:uppercase;border:1px solid #5A5A55;color:var(--ink2);padding:5px 12px;border-radius:999px">Setmana del 9 al 15 de novembre de 2026</span>
+          <h2 class="h2" data-split>Horari <em>setmanal</em></h2>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:18px">
+          <a class="btn btn-pdf" id="hpdf" href="horari-espai-wellness.pdf" target="_blank" rel="noopener"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>Descarrega l'horari en PDF</a>
+          <div id="f-day" role="group" aria-label="Dia de la setmana" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end"></div>
+        </div>
+      </div>
+      <div><div id="tt" style="display:flex;flex-direction:column"></div></div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:28px;padding-top:22px;border-top:1px solid var(--ink)">
+        <span style="font-size:14px;color:var(--ink2)">El filtre de tipus d'activitat de dalt també s'aplica a l'horari. <b style="font-weight:600">€</b> = activitat amb tarifa pròpia.</span>
+        <a class="btn btn-k" href="https://espaiwellness.poliwincloud.com/">Reserva a l'àrea privada</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ GALERIA ============ -->
+<main id="p-galeria" class="page">
+  <section class="gut" style="padding-block:72px 28px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 80px">
+    <h1 class="h1" data-split style="font-size:clamp(48px,7vw,110px)">La <em>galeria</em></h1>
+    <p data-rev style="margin:0;max-width:380px;color:var(--mut)">L'Espai tal com és: les sales, l'aigua, la terrassa i la gent que li dona vida. Tria una categoria i camina pel passadís.</p>
+  </section>
+  <section class="cor" id="cor" data-room="El passadís">
+    <div class="cor-pin">
+      <div class="cor-top gut"><span>El passadís · desplaça't</span><b aria-live="off"><span id="cor-n">01</span><i id="cor-t">/ 14</i></b></div>
+      <div class="cor-fil gut" id="gfil" role="group" aria-label="Filtra la galeria"></div>
+      <div class="cor-track" id="cort"></div>
+      <div class="cor-bar" aria-hidden="true"><span id="cor-b"></span></div>
+    </div>
+  </section>
+  <section class="gut" data-room="Vine-hi" style="padding-block:96px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px 80px;border-top:1px solid var(--line)">
+    <h2 class="h2" data-split style="flex:2 1 420px">Les fotos no ho diuen tot.<br><em>Vine a veure-ho.</em></h2>
+    <div data-rev style="flex:1 1 280px;display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="btn btn-a js-vis">Concerta una visita</button><a class="btn btn-o" href="#contacte">Com arribar-hi</a></div>
+  </section>
+</main>
+
+<!-- ============ PREUS ============ -->
+<main id="p-preus" class="page">
+  <section class="gut" data-room="Preus" style="padding-block:72px 48px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 80px">
+    <h1 class="h1" data-split style="font-size:clamp(48px,7vw,110px)">Les nostres <em>tarifes</em></h1>
+  </section>
+
+  <section class="light" data-room="Les tarifes">
+    <div class="gut" style="padding-block:88px 96px">
+      <div class="ptabs" id="ptabs" role="tablist" aria-label="Servei"></div>
+      <div class="pnl" id="pnl" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="gut" data-room="Més serveis" style="padding-block:88px 40px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 64px;margin-bottom:28px">
+      <h2 class="h2" data-split style="font-size:clamp(34px,4.4vw,62px)">I la resta,<br><em>a consultar</em></h2>
+    </div>
+    <ul class="nt rvl" style="border-top:1px solid var(--line);--ln:var(--line)">
+      <li><b>Pàdel</b><span>Classes per a adults, escola infantil i lloguer de pistes. <a href="https://playtomic.com/clubs/espai-wellness-padel" style="color:var(--lilaT);border-bottom:1px solid var(--lilaT)">Reserva a Playtomic ↗</a></span></li>
+      <li><b>Entrenament personal</b><span>De Pilates i d'hipopressius.</span></li>
+      <li><b>Salut i benestar</b><span>Quiromassatge, nutrició, acupuntura xinesa i coaching.</span></li>
+      <li><b>I també</b><span>Centre de bellesa, running, SPA i piscina, activitats dirigides i Fitness 10.</span></li>
+    </ul>
+  </section>
+
+  <section class="gut" data-room="Avantatges" style="padding-block:72px 96px;display:flex;flex-wrap:wrap;gap:48px clamp(40px,7vw,120px);align-items:flex-start">
+    <div class="stk" style="flex:1 1 320px;display:flex;flex-direction:column;gap:26px">
+      <h2 class="h2" data-split style="font-size:clamp(36px,4.4vw,62px)">Ser soci<br><em>té avantatges</em></h2>
+      <div data-rev style="display:flex;flex-direction:column;gap:18px;align-items:flex-start"><p style="margin:0;color:var(--soft);max-width:340px">Vols saber quina quota t'encaixa? Vine a veure el club i en parlem.</p><button type="button" class="btn btn-a js-vis">Concerta una visita</button><span style="font-size:14px;color:var(--mut)">93 861 87 04 · 645 61 94 94 (comercial)</span></div>
+    </div>
+    <ul class="list av rvl" style="flex:1.6 1 440px;margin:0;border-bottom:1px solid var(--line)">
+      <li><b>Visita i assessorament</b><span>Visita tècnica amb seguiment personalitzat.</span></li>
+      <li><b>Primera visita gratis</b><span>A quiromassatge i a nutrició.</span></li>
+      <li><b>Demostració de Bodytec</b><span>Una demostració inclosa per als socis.</span></li>
+      <li><b>Descomptes de soci</b><span>En natació, en Pilates Reformer i en entrenaments personals.</span></li>
+      <li><b>Intersport i Biking Point</b><span>Descomptes a les botigues de Granollers.</span></li>
+      <li><b>Fitness 10</b><span>7 dies gratis a l'any en 9 centres associats, i 50% de descompte a l'entrada diària a partir del vuitè dia.</span></li>
+      <li><b>Aquafamily</b><span>L'últim diumenge de cada mes, de 9 a 13 h, la zona d'aigües amb els teus fills (màxim 2 nens per adult).</span></li>
+    </ul>
+  </section>
+
+  <section class="gut" data-room="Empreses" style="padding-block:24px 72px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 80px;border-top:1px solid var(--line);padding-top:72px">
+    <div style="flex:2 1 380px;display:flex;flex-direction:column;gap:12px">
+      <span class="eyebrow" style="color:var(--lilaT)">Empreses saludables</span>
+      <h2 class="serif" data-split style="margin:0;font-size:clamp(32px,3.5vw,52px);line-height:1">El benestar del teu equip, també a l'Espai.</h2>
+    </div>
+    <a class="btn btn-o" href="#contacte">Acords per a empreses</a>
+  </section>
+</main>
+
+<!-- ============ CONTACTE ============ -->
+<main id="p-contacte" class="page">
+  <section class="gut" style="padding-block:72px 48px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 80px">
+    <h1 class="h1" style="font-size:clamp(48px,7vw,110px)">Vine a <em>sentir-ho</em></h1>
+    <p style="margin:0;max-width:380px;color:var(--mut)">Deixa'ns les teves dades i et truquem per trobar el millor moment per ensenyar-te el club.</p>
+  </section>
+  <section class="gut" style="padding-bottom:88px;display:flex;flex-wrap:wrap;gap:56px 80px">
+    <form id="cform" style="flex:1 1 380px;display:flex;flex-direction:column;gap:22px;min-width:0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px">
+        <div class="field"><label for="f-nom">Nom i cognoms</label><input id="f-nom" type="text"></div>
+        <div class="field"><label for="f-tel">Telèfon</label><input id="f-tel" type="tel"></div>
+      </div>
+      <div class="field"><label for="f-mail">Correu electrònic</label><input id="f-mail" type="email"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px">
+        <div class="field"><label for="f-disp">Quan et va millor?</label><select id="f-disp"><option>Matí</option><option>Migdia</option><option>Tarda</option><option>Cap de setmana</option></select></div>
+        <div class="field"><label for="f-que">Què t'interessa més?</label><select id="f-que"><option>Sala fitness</option><option>Activitats dirigides</option><option>Pàdel</option><option>Piscina</option><option>Zona d'aigües</option></select></div>
+      </div>
+      <div class="field"><label for="f-msg">Missatge (opcional)</label><textarea id="f-msg" rows="3"></textarea></div>
+      <label style="display:flex;align-items:center;gap:12px;min-height:44px;font-size:14px;color:var(--soft)"><input type="checkbox" id="f-priv" style="width:20px;height:20px;min-height:0">He llegit i accepto la política de privacitat</label>
+      <label style="display:flex;align-items:center;gap:12px;min-height:44px;font-size:14px;color:var(--soft)"><input type="checkbox" id="f-news" style="width:20px;height:20px;min-height:0">Vull rebre l'Espai News al meu correu</label>
+      <div style="display:flex;flex-wrap:wrap;gap:12px"><button type="submit" class="btn btn-a">Envia</button><a class="btn btn-o" href="https://wa.me/34645619494">O escriu-nos per WhatsApp</a></div>
+      <p id="f-ok" hidden style="margin:0;color:var(--lilaT)">Gràcies pel teu missatge! Et respondrem el més aviat possible.</p>
+    </form>
+    <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:32px;min-width:0">
+      <a href="https://maps.app.goo.gl/WSjPUjTjzZKkKE4n8" class="ph" style="height:340px;box-sizing:border-box;padding:24px;display:flex;flex-direction:column;justify-content:space-between;border-radius:var(--r)"><span class="pl">Mapa interactiu de Google Maps</span><span class="btn btn-w" style="align-self:flex-end">Com arribar-hi ↗</span></a>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:28px 40px;font-size:16px">
+        <div style="display:flex;flex-direction:column;gap:6px"><span class="eyebrow" style="font-size:12px;color:var(--mut)">Adreça</span><span>Passeig Conca del Besòs, 12<br>08403 Granollers</span><span style="color:var(--mut)">Pàrquing al mateix club</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span class="eyebrow" style="font-size:12px;color:var(--mut)">Horari</span><span>Dl a Dv · 6:00 – 23:00</span><span>Ds, Dg i festius · 8:00 – 21:30</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span class="eyebrow" style="font-size:12px;color:var(--mut)">Telèfon</span><span>Recepció · 93 861 87 04</span><span>Comercial · 645 61 94 94</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span class="eyebrow" style="font-size:12px;color:var(--mut)">Segueix-nos</span><a href="https://www.instagram.com/espaiwellness/">Instagram</a><a href="https://ca-es.facebook.com/espaiwellnesspadel">Facebook</a><a href="https://www.youtube.com/user/espaiwellness">YouTube</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Flyer de servicio -->
+<div id="flyo" hidden class="ovl">
+  <div id="fly" class="fly photo" role="dialog" aria-modal="true" aria-labelledby="fy-tt">
+    <button type="button" class="xcl" id="fy-close" aria-label="Tanca">✕</button>
+    <div class="fin">
+      <span id="fy-k" class="eyebrow" style="color:var(--lilaT)"></span>
+      <h2 id="fy-tt" class="ftt"></h2>
+      <p id="fy-tx"></p>
+      <div id="fy-chips" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+      <div id="fy-act" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: fitxa d'activitat -->
+<div id="ficha" hidden class="ovl">
+  <div role="dialog" aria-modal="true" aria-labelledby="fx-name" style="background:var(--panel);max-width:680px;width:100%;max-height:88vh;overflow:auto;display:flex;flex-direction:column;border-radius:calc(var(--r) + 4px)">
+    <div id="fx-img" class="photo" style="height:260px;position:relative;flex-shrink:0">
+      <button type="button" class="xcl" id="fx-close" aria-label="Tanca la fitxa">✕</button>
+    </div>
+    <div style="padding:26px 28px 30px;display:flex;flex-direction:column;gap:12px;border-top:3px solid var(--lila)">
+      <span id="fx-cat" style="font-size:11px;letter-spacing:.2em;text-transform:uppercase"></span>
+      <span id="fx-name" class="serif" style="font-size:42px;line-height:1"></span>
+      <p id="fx-desc" style="margin:0;color:var(--soft)"></p>
+      <span id="fx-meta" style="font-size:14px;color:var(--mut)"></span>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">
+        <button type="button" id="fx-horari" class="btn btn-w">Veure a l'horari</button>
+        <a class="btn btn-o" href="https://espaiwellness.poliwincloud.com/">Reserva plaça</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: concerta una visita -->
+<div id="vis" hidden class="ovl">
+  <div role="dialog" aria-modal="true" aria-labelledby="vis-t" style="background:var(--panel);max-width:560px;width:100%;max-height:88vh;overflow:auto;border-radius:calc(var(--r) + 4px);border-top:3px solid var(--lila);padding:30px 28px 32px;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span class="eyebrow" style="color:var(--lilaT)">Sense compromís</span>
+        <span id="vis-t" class="serif" style="font-size:40px;line-height:1">Concerta una <em style="color:var(--lilaT)">visita</em></span>
+      </div>
+      <button type="button" id="vis-close" aria-label="Tanca" style="width:44px;height:44px;border-radius:50%;background:transparent;color:var(--fg);border:1px solid rgba(243,242,238,.4);font:inherit;font-size:18px;cursor:pointer;flex-shrink:0">✕</button>
+    </div>
+    <form id="vform" style="display:flex;flex-direction:column;gap:18px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px">
+        <div class="field"><label for="v-nom">Nom</label><input id="v-nom" type="text"></div>
+        <div class="field"><label for="v-tel">Telèfon</label><input id="v-tel" type="tel"></div>
+      </div>
+      <div class="field"><label for="v-mail">Correu electrònic</label><input id="v-mail" type="email"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px">
+        <div class="field"><label for="v-disp">Quan et va millor?</label><select id="v-disp"><option>Matí</option><option>Migdia</option><option>Tarda</option><option>Cap de setmana</option></select></div>
+        <div class="field"><label for="v-que">Què t'interessa més?</label><select id="v-que"><option>Sala fitness</option><option>Activitats dirigides</option><option>Pàdel</option><option>Piscina</option><option>Zona d'aigües</option></select></div>
+      </div>
+      <label style="display:flex;align-items:center;gap:12px;min-height:44px;font-size:14px;color:var(--soft)"><input type="checkbox" id="v-priv" style="width:20px;height:20px;min-height:0">He llegit i accepto la política de privacitat</label>
+      <button type="submit" class="btn btn-a">Demana la visita</button>
+      <p id="v-ok" hidden style="margin:0;color:var(--lilaT)">Rebut! El club ha rebut la teva sol·licitud i et trucarà aviat.</p>
+      <span style="font-size:13px;color:var(--mut)">O si ho prefereixes: 93 861 87 04 · WhatsApp 645 61 94 94</span>
+    </form>
+  </div>
+</div>
+
+<!-- Lightbox galería -->
+<div id="lb" hidden class="ovl" style="background:rgba(12,13,12,.9)">
+  <figure style="margin:0;max-width:min(1100px,94vw);display:flex;flex-direction:column;gap:12px">
+    <img id="lb-img" src="img/terrassa.jpg" alt="" style="max-width:100%;max-height:78vh;object-fit:contain;border-radius:var(--r)">
+    <figcaption style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <span id="lb-cap" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)"></span>
+      <button type="button" id="lb-close" class="btn btn-o" style="min-height:44px">Tanca</button>
+    </figcaption>
+  </figure>
+</div>
+
+<footer class="site gut">
+  <span>Passeig Conca del Besòs, 12 · 08403 Granollers · 93 861 87 04</span>
+  <span>Dl–Dv 6:00–23:00 · Ds, Dg i festius 8:00–21:30</span>
+  <span style="display:flex;flex-wrap:wrap;gap:8px 20px"><a href="https://www.instagram.com/espaiwellness/">Instagram</a><a href="#contacte">Contacte</a><a href="#inici">Avís legal</a></span>
+</footer>
+
+<div id="room" aria-hidden="true"><i></i><span class="rt"><span></span></span></div>
+<div id="cur" aria-hidden="true"></div>
+<div id="gate" aria-hidden="true"><div class="gtop"><img src="img/logo.png" alt="" class="glogo"><span>Granollers</span></div><div class="gmid"><span class="gn"></span><span class="gt"></span></div><div class="gbot"><span>Espai Wellness Pàdel</span><span>El teu gimnàs de referència</span></div></div>
+
+<div class="fab">
+  <div id="fab-menu" hidden class="fab-menu" style="display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+    <a class="fab-it" href="https://wa.me/34645619494"><span class="fl">WhatsApp · 645 61 94 94</span><span class="fi" style="background:#25D366"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></span></a>
+    <a class="fab-it" href="tel:+34938618704"><span class="fl">Truca'ns · 93 861 87 04</span><span class="fi" style="background:var(--lila)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9z"/></svg></span></a>
+  </div>
+  <button type="button" id="fab-btn" class="fab-main" aria-expanded="false" aria-label="Contacta amb el club">
+    <svg id="fab-ico" aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
+<script>
+/* ---------- Actividades (datos primero: el carrusel los usa) ---------- */
+var CATS={aigua:['Aigua','#7FB8D9','Piscina interior'],cos:['Cos-ment','#C9B8E8',"Sala d'activitats 2"],cardio:['Cardio','#F2A65A',"Sala d'activitats 1"],forca:['Força','#F3F2EE',"Sala d'activitats 1"],func:['Funcional','#E39FD4','Zona funcional']};
+var INT=['','Suau','Mitjana','Alta'];
+var ACT=[
+['Aiguagym','aigua',1,45,'img/a-aiguagym.jpg'],['Cursets nadons','aigua',1,30,'img/a-nadons.jpg'],['Cursets infantils','aigua',1,45,'img/a-infantils.jpg'],['Cursets adults','aigua',2,45,'img/a-natadults.jpg'],['Aquamamis','aigua',1,45,'img/a-aquamamis.jpg'],
+['Pilates','cos',1,50,'img/a-pilates.jpg'],['Ioga','cos',1,60,'img/act-cos.jpg'],['Hipopressius','cos',1,45,'img/a-hipopressius.jpg'],['Esquena sana','cos',1,45,'img/a-esquena.jpg'],['Mobility','cos',1,30,'img/a-mobility.jpg'],['Espai Estira','cos',1,30,'img/a-estira.jpg'],
+['Cycling','cardio',3,45,'img/a-cycling.jpg'],['Bodycombat','cardio',3,55,'img/a-bodycombat.jpg'],['Zumba','cardio',2,50,'img/a-zumba.jpg'],['Defensa personal','cardio',2,50,'img/a-defensa.jpg'],
+['Bodypump','forca',3,55,'img/act-forca.jpg'],['TBC','forca',2,50,'img/a-tbc.jpg'],['Glutis 30′','forca',2,30,'img/a-glutis.jpg'],['Abdominals 30′','forca',2,30,'img/a-abdominals.jpg'],['Espai Suau','forca',1,45,'img/a-esuau.jpg'],
+['Tabata','func',3,30,'img/a-tabata.jpg'],['Functional Training','func',3,45,'img/a-functional.jpg'],['TRX','func',2,45,'img/a-trx.jpg'],['HBX Boxing','func',3,45,'img/a-hbx-hd.jpg']];
+var DESC={
+'Aiguagym':"Cardio i to muscular dins l'aigua, amb el mínim impacte per a les articulacions.",
+'Cursets nadons':"Familiarització amb l'aigua per als més petits, sempre acompanyats.",
+'Cursets infantils':"Aprendre a nedar bé, per nivells i en grups reduïts.",
+'Cursets adults':"Tècnica d'estils i resistència a la piscina climatitzada, per a tots els nivells.",
+'Aquamamis':"Activitat aquàtica suau per a mares, abans i després del part.",
+'Pilates':"Força profunda, control i postura amb el mètode Pilates sobre màrfega.",
+'Ioga':"Postures, respiració i calma per guanyar flexibilitat i deixar anar l'estrès.",
+'Hipopressius':"Tècnica postural i respiratòria per enfortir la faixa abdominal i el sòl pelvià.",
+'Esquena sana':"Exercicis específics per prevenir i alleujar les molèsties d'esquena.",
+'Mobility':"Mitja hora de mobilitat articular per moure't millor dins i fora del club.",
+'Espai Estira':"Estiraments guiats per acabar l'entrenament, o el dia, com cal.",
+'Cycling':"Pedalades d'intensitat sobre bicicletes Technogym Ride, amb música i dades en pantalla.",
+'Bodycombat':"Cardio inspirat en les arts marcials: cops, puntades i molta energia, sense contacte.",
+'Zumba':"Balla ritmes llatins i crema calories sense ni adonar-te'n.",
+'Defensa personal':"Tècniques bàsiques de defensa amb treball físic de debò.",
+'Bodypump':"Barra i discos per treballar tot el cos a ritme de música.",
+'TBC':"Total Body Conditioning: tonificació completa amb material divers.",
+'Glutis 30′':"Mitja hora intensiva centrada en glutis i cames.",
+'Abdominals 30′':"Mitja hora directa al nucli: abdominals i core.",
+'Espai Suau':"Tonificació de baixa intensitat, pensada per anar al teu ritme.",
+'Tabata':"Intervals de 20 segons a fons i 10 de descans. Curt i molt intens.",
+'Functional Training':"Moviments globals a l'Synrgy 360 per guanyar força útil.",
+'TRX':"Entrenament en suspensió amb el pes del teu propi cos.",
+'HBX Boxing':"Boxa fitness amb sac: cardio, força i descàrrega d'adrenalina."};
+
+/* ---------- Recorregut ---------- */
+var TOUR=[
+ ['01','Fitness',"La sala més gran del Vallès Oriental: 700 m² amb maquinària Technogym d'última generació, Biostrength i Checkup per entrenar amb dades, no amb intuïcions.",['Technogym','Zona funcional','Entrenador personal'],'img/fitness.jpg'],
+ ['02','Piscina',"Piscina interior per nedar tot l'any, amb aiguagym i cursets de natació per a nadons, infants, adults i mares.",['Aiguagym','Cursets de natació','Aquamamis'],'img/piscina.jpg'],
+ ['03','Spa',"Una zona d'aigües completa per acabar l'entrenament, o per venir només a això. L'aigua té un gran poder de seducció.",['Bany turc','Sauna finlandesa','Dutxes bitèrmiques','Font de gel','Tumbones tèrmiques'],'img/spa.jpg'],
+ ['04','Pàdel',"Cinc pistes a la nostra terrassa, amb vistes a la ciutat. Lligues socials, interclubs, tornejos i escola per a totes les edats.",[],'img/padel.jpg'],
+ ['05','Restaurant',"El club no s'acaba al vestidor. Restaurant, cafeteria de la terrassa i solàrium per allargar la visita amb calma.",['Restaurant','Cafeteria','Solàrium'],'img/rest2.jpg']
+];
+document.getElementById('tour').innerHTML=TOUR.map(function(t,i){
+ var tags=t[3].length?'<div data-rev style="display:flex;flex-wrap:wrap;gap:8px">'+t[3].map(function(x){return '<span class="tag">'+x+'</span>'}).join('')+'</div>'
+  :'<a data-rev href="#serveis" style="align-self:flex-start;padding:13px 0;border-bottom:1.5px solid var(--lilaT);color:var(--lilaT);font-size:14px;letter-spacing:.06em;font-weight:600">Tot sobre el pàdel →</a>';
+ return '<article class="tour" data-tour data-room="'+t[1]+'" data-rn="'+t[0]+'" style="--k:'+i+'"><div class="img"><span class="door d-arch"><i class="pic photo" style="background-image:linear-gradient(rgba(12,13,12,.04),rgba(12,13,12,.18)),url(\''+t[4]+'\')"></i></span></div><div class="txt">'+
+ '<span class="num" aria-hidden="true">'+t[0]+'</span>'+
+ '<div style="display:flex;flex-direction:column;gap:18px"><h3 data-split>'+t[1]+'</h3><p data-rev style="margin:0;color:var(--soft)">'+t[2]+'</p></div>'+tags+'</div></article>';
+}).join('');
+
+/* ---------- Carrusel Equinox: las 24 actividades en B/N, formatos variados ---------- */
+/* Formatos: vertical (3/4, 4/5), cuadrado (1/1) y apaisado (3/2, 16/10), repartidos sin rachas */
+var ARS=['3/4','16/10','1/1','4/5','3/2','1/1','3/4','3/2','4/5','1/1','16/10','3/4','1/1','3/2','4/5','3/4','16/10','1/1','4/5','3/2','3/4','1/1','16/10','4/5'];
+document.getElementById('eq').innerHTML=ACT.map(function(a,i){
+ return '<button type="button" class="eqi" data-i="'+i+'" style="aspect-ratio:'+ARS[i]+'" aria-label="Obre la fitxa de '+a[0]+'"><img src="'+a[4]+'" alt="" draggable="false"><span class="cap">'+a[0]+'</span></button>';
+}).join('');
+(function(){
+ var el=document.getElementById('eq'),bar=document.getElementById('eq-bar');
+ var down=false,moved=0,sx=0,sl=0,vx=0,lx=0,lt=0,raf=0;
+ function prog(){
+  var w=Math.max(.1,Math.min(1,el.clientWidth/Math.max(1,el.scrollWidth)));
+  var max=el.scrollWidth-el.clientWidth,r=max>0?el.scrollLeft/max:0;
+  bar.style.width=(w*100)+'%';bar.style.left=(r*(1-w)*100)+'%';
+ }
+ el.addEventListener('scroll',prog,{passive:true});
+ window.addEventListener('resize',prog);
+ /* ratón: arrastrar con inercia (en táctil, scroll nativo) */
+ el.addEventListener('mousedown',function(e){
+  if(e.button!==0)return;
+  cancelAnimationFrame(raf);down=true;moved=0;sx=lx=e.clientX;sl=el.scrollLeft;vx=0;lt=performance.now();
+  el.classList.add('drag');e.preventDefault();
+ });
+ window.addEventListener('mousemove',function(e){
+  if(!down)return;
+  var d=e.clientX-sx;moved=Math.max(moved,Math.abs(d));el.scrollLeft=sl-d;
+  var n=performance.now();vx=(e.clientX-lx)/Math.max(1,n-lt);lx=e.clientX;lt=n;
+ });
+ window.addEventListener('mouseup',function(){
+  if(!down)return;down=false;el.classList.remove('drag');
+  var v=vx*16;
+  (function step(){if(Math.abs(v)<.4)return;el.scrollLeft-=v;v*=.94;raf=requestAnimationFrame(step)})();
+ });
+ el.addEventListener('click',function(e){
+  if(moved>6){e.preventDefault();e.stopPropagation();moved=0;return}
+  var b=e.target.closest('[data-i]');if(b)openF(+b.getAttribute('data-i'));
+ },true);
+ function by(dir){cancelAnimationFrame(raf);el.scrollBy({left:dir*Math.round(el.clientWidth*.72),behavior:'smooth'})}
+ document.getElementById('eq-prev').addEventListener('click',function(){by(-1)});
+ document.getElementById('eq-next').addEventListener('click',function(){by(1)});
+ prog();
+})();
+
+/* ---------- Home: carrusel gran de l'Espai ---------- */
+(function(){
+ var el=document.getElementById('hx');if(!el)return;
+ var bar=document.getElementById('hx-bar'),nn=document.getElementById('hx-n');
+ var down=false,moved=0,sx=0,sl=0,vx=0,lx=0,lt=0,raf=0;
+ function prog(){
+  var w=Math.max(.1,Math.min(1,el.clientWidth/Math.max(1,el.scrollWidth)));
+  var max=el.scrollWidth-el.clientWidth,r=max>0?el.scrollLeft/max:0;
+  bar.style.width=(w*100)+'%';bar.style.left=(r*(1-w)*100)+'%';
+  var it=el.querySelectorAll('.hxi'),c=el.scrollLeft+el.clientWidth/2,b=0,bd=1e9;
+  for(var i=0;i<it.length;i++){var d=Math.abs(it[i].offsetLeft+it[i].offsetWidth/2-c);if(d<bd){bd=d;b=i}}
+  if(max>0&&el.scrollLeft>=max-2)b=it.length-1;
+  nn.textContent=('0'+(b+1)).slice(-2);
+ }
+ el.addEventListener('scroll',prog,{passive:true});window.addEventListener('resize',prog);
+ el.addEventListener('mousedown',function(e){
+  if(e.button!==0)return;
+  cancelAnimationFrame(raf);down=true;moved=0;sx=lx=e.clientX;sl=el.scrollLeft;vx=0;lt=performance.now();
+  el.classList.add('drag');e.preventDefault();
+ });
+ window.addEventListener('mousemove',function(e){
+  if(!down)return;
+  var d=e.clientX-sx;moved=Math.max(moved,Math.abs(d));el.scrollLeft=sl-d;
+  var n=performance.now();vx=(e.clientX-lx)/Math.max(1,n-lt);lx=e.clientX;lt=n;
+ });
+ window.addEventListener('mouseup',function(){
+  if(!down)return;down=false;el.classList.remove('drag');
+  var v=vx*16;
+  (function step(){if(Math.abs(v)<.4)return;el.scrollLeft-=v;v*=.94;raf=requestAnimationFrame(step)})();
+ });
+ el.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation();moved=0}},true);
+ function to(dir){
+  cancelAnimationFrame(raf);
+  var it=el.querySelectorAll('.hxi'),c=el.scrollLeft+el.clientWidth/2,b=0,bd=1e9;
+  for(var i=0;i<it.length;i++){var d=Math.abs(it[i].offsetLeft+it[i].offsetWidth/2-c);if(d<bd){bd=d;b=i}}
+  var n=Math.max(0,Math.min(it.length-1,b+dir)),t=it[n];
+  el.scrollTo({left:t.offsetLeft+t.offsetWidth/2-el.clientWidth/2,behavior:'smooth'});
+ }
+ document.getElementById('hx-prev').addEventListener('click',function(){to(-1)});
+ document.getElementById('hx-next').addEventListener('click',function(){to(1)});
+ prog();
+})();
+
+/* ---------- Hero: la película completa (10:39) en 8 tramos encadenados ---------- */
+(function(){
+ var SEG=['img/hero-1.mp4','img/hero-2.mp4','img/hero-3.mp4','img/hero-4.mp4','img/hero-5.mp4','img/hero-6.mp4','img/hero-7.mp4','img/hero-8.mp4'];
+ var N=SEG.length,LEN=+document.getElementById('hvids').getAttribute('data-len')||80,TOTAL=638.76;
+ var v=[document.getElementById('hv0'),document.getElementById('hv1')];
+ var snd=document.getElementById('hsnd'),prog=document.getElementById('hprog'),hero=document.querySelector('.hero');
+ var cur=0,k=0,sw=false,muted=true;
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){snd.hidden=true;return}
+ function put(el,i){el.src=SEG[i];el.load()}
+ function swap(){
+  if(sw)return;
+  var a=v[cur],b=v[1-cur],nk=(k+1)%N;
+  if(b.readyState<2){ if(a.ended){a.currentTime=0;a.play().catch(function(){})} return }
+  sw=true;b.currentTime=0;
+  var pr=b.play();
+  (pr&&pr.then?pr:Promise.resolve()).then(function(){
+   b.classList.add('on');a.classList.remove('on');
+   setTimeout(function(){a.pause();k=nk;cur=1-cur;sw=false;put(a,(k+1)%N)},520);
+  },function(){sw=false});
+ }
+ v.forEach(function(el){el.muted=true;el.addEventListener('ended',function(){if(el===v[cur])swap()})});
+ (function tick(){
+  var a=v[cur];
+  if(!sw&&k<N-1&&a.currentTime>=LEN-0.03)swap();
+  if(prog)prog.style.width=Math.min(100,(k*LEN+a.currentTime)/TOTAL*100)+'%';
+  requestAnimationFrame(tick);
+ })();
+ put(v[0],0);v[0].classList.add('on');v[0].play().catch(function(){});
+ v[0].addEventListener('canplaythrough',function f(){v[0].removeEventListener('canplaythrough',f);put(v[1],1)});
+ /* pausa cuando el hero no se ve (otra página o fuera de pantalla) */
+ var cover=false,inView=true;
+ if('IntersectionObserver' in window)new IntersectionObserver(function(es){
+  inView=es[0].isIntersecting;var a=v[cur];
+  if(inView&&!cover){a.play().catch(function(){})}else{a.pause()}
+ },{threshold:.05}).observe(hero);
+ window.__hcover=function(c){cover=c;var a=v[cur];if(c){a.pause()}else if(inView){a.play().catch(function(){})}};
+ snd.addEventListener('click',function(){
+  muted=!muted;
+  v.forEach(function(el){el.muted=muted;if(!muted)el.volume=.85});
+  v[cur].play().catch(function(){});
+  snd.setAttribute('aria-pressed',String(!muted));
+  snd.querySelector('span').textContent=muted?'Activa el so':'Silencia';
+  document.getElementById('hsnd-w').setAttribute('d',muted?'m22 9-6 6M16 9l6 6':'M16 9a5 5 0 0 1 0 6M19 6a9 9 0 0 1 0 12');
+ });
+})();
+
+/* vídeo del club: solo reproduce cuando se ve */
+(function(){
+ var cv=document.getElementById('clubv');
+ if('IntersectionObserver' in window)new IntersectionObserver(function(es){if(es[0].isIntersecting){cv.play().catch(function(){})}else{cv.pause()}},{threshold:.15}).observe(cv);
+})();
+
+/* ---------- Serveis: flyers ---------- */
+var W='https://www.espaiwellness.com';
+var SRV=[
+ ['fitness','Sala Fitness','Instal·lacions',"700 m² de sala —la més gran del Vallès Oriental— amb maquinària Technogym d'última generació. Biostrength per treballar la força amb dades i Checkup per mesurar el teu punt de partida, amb els nostres tècnics sempre a prop.",['Technogym','Biostrength','Checkup','Zona funcional'],'img/fitness.jpg',W+'/installacions/sala-fitness/',null],
+ ['dirigides','Activitats dirigides','Entrena acompanyat',"150 classes cada setmana i 24 modalitats incloses a la quota: aigua, cos-ment, cardio, força i funcional, de 6 del matí a 9 del vespre. Sempre amb tècnics del club.",['150 classes/setmana','24 modalitats','De 6:00 a 21:00'],'img/dirigides-sala.jpg',W+'/activitats/','dirigides'],
+ ['padel','Pàdel','La terrassa',"Cinc pistes amb vistes a Granollers: Estrella Damm, Mercedes-Benz Quadis Autolica, Àgora, Vacca Engineering i la Pista 5. Lligues socials, interclubs, tornejos i escola de pàdel de 5 a 15 anys, dimecres i divendres a la tarda. Coordinació: 671 033 212.",['5 pistes','Lligues i tornejos','Escola 5–15 anys'],'img/padel.jpg',W+'/padel/','playtomic'],
+ ['natacio','Cursets de natació','A la piscina climatitzada',"Cursets per a totes les edats: nadons, infantils, adults i Aquamamis per a mares. Grups reduïts per nivells, tot l'any, a la piscina interior climatitzada.",['Nadons','Infantils','Adults','Aquamamis'],'img/sv-natacio.jpg',W+'/cursets-de-natacio/',null],
+ ['spa',"SPA · Zona d'aigües",'Recupera',"Bany turc, sauna finlandesa, dutxes bitèrmiques, font de gel i tumbones tèrmiques. La manera de tancar cada entrenament com toca, o de venir només a desconnectar.",['Bany turc','Sauna','Font de gel'],'img/spa.jpg',W+'/installacions/spa-zona-daigues/',null],
+ ['pilates','Estudi Pilates Reformer','Estudi propi',"Màquines Reformer i grups molt reduïts per treballar força profunda, control i postura amb acompanyament constant.",['Grups reduïts','Màquines Reformer'],'img/sv-pilates.jpg',W+'/estudi-pilates-reformer/',null],
+ ['pt','Entrenador personal','Un a un',"Entrenaments personals de fitness, pàdel, Pilates i hipopressius. Un tècnic, un pla i un objectiu: el teu.",['Fitness','Pàdel','Pilates','Hipopressius'],'img/act-func.jpg',W+'/personal-trainer/entrenaments-personals-de-fitness/',null],
+ ['nutricio','Nutrició','Cuida\'t per dins',"Consulta de nutrició al mateix club per alinear el que menges amb el que entrenes: pla personalitzat i seguiment.",['Plans personalitzats','Seguiment'],'img/sv-nutricio.jpg',W+'/serveis/nutricionista/',null],
+ ['coaching','Coaching','La ment també entrena',"Sessions per posar objectius clars, mantenir la motivació i fer que l'hàbit s'aguanti en el temps.",['Objectius','Motivació'],'img/sv-coaching.jpg',W+'/serveis/coaching/',null],
+ ['quiro','Quiromassatge','Recuperació',"Massatge terapèutic per descarregar, recuperar-te i prevenir lesions.",['Descàrrega','Recuperació'],'img/sv-quiro.jpg',W+'/serveis/quiromassatge/',null],
+ ['acupuntura','Acupuntura xinesa','Equilibri',"Medicina tradicional xinesa aplicada al benestar, el descans i la recuperació.",['Benestar','Descans'],'img/sv-acupuntura.jpg',W+'/serveis/acupuntura-xinesa/',null],
+ ['bellesa','Centre de Bellesa Moments','Posa\'t a punt',"Tractaments facials i corporals sense sortir del club.",['Facials','Corporals'],'img/sv-bellesa.jpg',W+'/serveis/centre-de-bellesa-moments/',null],
+ ['ludoteca','Ludoteca','Per als petits',"Mentre tu entrenes, ells juguen: espai infantil amb monitors dins del mateix club.",['Amb monitors','Dins del club'],'img/sv-ludoteca.jpg',W+'/serveis/ludoteca/',null],
+ ['running','Espai Running','Surt a córrer',"Grups d'entrenament de carrera per a tots els nivells, dins i fora del club.",['Tots els nivells','En grup'],'img/sv-running.jpg',W+'/espai-running/',null],
+ ['casal',"Casal d'Estiu",'De 3 a 13 anys',"Pàdel i piscina cada dia, psicomotricitat, tallers i molta gresca. Del 22 de juny al 31 de juliol, amb acollida de matí i servei de menjador.",['22 juny – 31 juliol','Pàdel i piscina diaris','Acollida i menjador'],'img/casal.jpg',W+'/casal-estiu-granollers/',null],
+ ['restaurant','Restaurant i cafeteria','La sobretaula',"Esmorzars, menús i sobretaules a la cafeteria de la terrassa, amb el solàrium a tocar.",['Restaurant','Cafeteria','Solàrium'],'img/rest2.jpg',W+'/restaurant/',null],
+ ['empreses','Empreses saludables','Per a equips',"Programes de benestar corporatiu: quotes per a equips, activitats a mida i un club sencer per cuidar la teva gent.",['Quotes d\'empresa','Activitats a mida'],'img/sv-empreses.jpg',W+'/empreses-saludables/',null]
+];
+document.getElementById('svc').innerHTML='<div class="svx"><div class="svl">'+SRV.map(function(s,i){
+ return '<button type="button" class="srw" data-f="'+i+'" data-cur="Obre"><span class="srm door d-keep" data-door data-from=".99" data-to=".55"><img class="pic" src="'+s[5]+'" alt="" loading="lazy" decoding="async"></span><span class="sn">'+String(i+1).padStart(2,'0')+'</span><span class="stt">'+s[1]+'</span><span class="sk">'+s[2]+'</span><span class="sar" aria-hidden="true">↗</span></button>';
+}).join('')+'</div><aside class="svs" id="svs" data-cur="Obre" aria-hidden="true">'+SRV.map(function(s){return '<div class="stg"><img src="'+s[5]+'" alt="" loading="lazy" decoding="async"></div>'}).join('')+'<div class="svc-cap" id="svc-cap"></div></aside></div>';
+var flyo=document.getElementById('flyo');
+function openFly(i){
+ var s=SRV[i];
+ document.getElementById('fly').style.backgroundImage='linear-gradient(180deg,rgba(10,10,12,.22) 0%,rgba(10,10,12,.5) 42%,rgba(10,10,12,.9) 100%),url("'+s[5]+'")';
+ document.getElementById('fy-k').textContent=s[2];
+ document.getElementById('fy-tt').textContent=s[1];
+ document.getElementById('fy-tx').textContent=s[3];
+ document.getElementById('fy-chips').innerHTML=s[4].map(function(c){return '<span class="tag" style="background:rgba(12,13,12,.4);border-color:rgba(243,242,238,.4);color:#fff">'+c+'</span>'}).join('');
+ var act='';
+ if(s[7]==='dirigides')act+='<button type="button" class="plink" id="fy-dir">Explora les 24 activitats ↓</button>';
+ if(s[7]==='playtomic')act+='<a class="plink" href="https://playtomic.com/clubs/espai-wellness-padel">Reserva pista a Playtomic ↗</a>';
+ act+='<a class="plink" href="'+s[6]+'">La pàgina del servei ↗</a>';
+ document.getElementById('fy-act').innerHTML=act;
+ var d=document.getElementById('fy-dir');
+ if(d)d.addEventListener('click',function(){flyo.hidden=true;document.getElementById('dirigides').scrollIntoView({behavior:'smooth'})});
+ flyo.hidden=false;
+}
+document.getElementById('svc').addEventListener('click',function(e){
+ var b=e.target.closest('.srw');
+ if(!b&&e.target.closest('#svs'))b=document.querySelector('.srw.act')||document.querySelector('.srw');
+ if(b)openFly(+b.getAttribute('data-f'));
+});
+flyo.addEventListener('click',function(e){if(e.target===flyo)flyo.hidden=true});
+document.getElementById('fy-close').addEventListener('click',function(){flyo.hidden=true});
+
+/* ---------- Grid de actividades + horario ---------- */
+var HOR=[[["06:10","07:00","Cycling","Sala Cycling","Luis Arias",0],["07:10","08:00","BodyPump™","AADD 1","Mara Hernández",0],["07:15","08:00","Aiguagym","Piscina interior","Mariona Salvany",0],["07:15","08:00","Functional Training","Zona funcional","Andrés V.",0],["08:15","09:00","Aiguagym","Piscina interior","Mariona Salvany",0],["08:15","09:00","Tabata","AADD 1","Mara Hernández",0],["09:00","09:30","Abdominals","AADD 1","Andrés V.",0],["09:15","10:00","Aiguagym","Piscina interior","Mariona Salvany",0],["09:30","10:20","Cycling","Sala Cycling","Oscar López",0],["09:30","10:20","Mobility","Zona funcional","César Terg",0],["09:30","10:20","Esquena sana","AADD 2","Quim I.",0],["09:30","10:20","BodyPump™","AADD 1","Andrés V.",0],["10:30","11:15","Aiguagym","Piscina interior","Mariona Salvany",0],["10:30","11:20","Estudi Pilates","Estudi Pilates","César Terg",1],["10:30","11:20","Espai Estira","AADD 1","Jon I.",0],["10:30","11:20","Foam Roller","AADD 2","Quim I.",0],["11:30","12:15","Aquamamis","Piscina interior","Mariona Salvany",1],["13:40","14:30","HBX Boxing","AADD 2","Andrés V.",0],["13:40","14:30","TBC","AADD 1","Oriol M.",0],["13:40","14:30","Cycling","Sala Cycling","Santi P.",0],["14:30","15:20","TBC","AADD 1","Oriol M.",0],["15:10","16:00","Estudi Pilates","Estudi Pilates","Jon I.",1],["15:20","16:10","BodyPump™","AADD 1","Oriol M.",0],["16:30","17:00","Glutis","AADD 1","Edu Ramos",0],["17:10","18:00","BodyPump™","AADD 1","Mara Hernández",0],["17:10","18:00","Ioga","AADD 2","Anabel Gómez",0],["17:15","18:00","Functional Training","Zona funcional","Andrés V.",0],["17:30","18:15","Curset natació","Piscina interior","Rosana",1],["18:10","19:00","TBC","AADD 1","Edu Ramos",0],["18:10","19:00","Estudi Pilates","Estudi Pilates","Mara Hernández",1],["18:10","19:00","Cycling","Sala Cycling","Joan Quintana",0],["18:15","19:00","Functional Training","Zona funcional","Andrés V.",0],["18:15","19:00","Tabata","AADD 2","Mara Hernández",0],["18:15","19:00","Curset natació","Piscina interior","Rosana",1],["19:10","20:00","Espai Estira","AADD 2","Mara Hernández",0],["19:10","20:00","BodyPump™","AADD 1","Víctor F.",0],["19:10","20:00","Estudi Pilates","Estudi Pilates","Nuria M.",1],["19:10","20:00","Cycling","Sala Cycling","Joan Quintana",0],["19:15","20:00","Functional Training","Zona funcional","Andrés V.",0],["19:15","20:00","Aiguatonic","Piscina interior","Rosana",0],["20:10","21:00","HBX Boxing","AADD 2","Andrés V.",0],["20:10","21:00","GAC","AADD 1","Mara Hernández",0],["20:15","21:00","Curset natació","Piscina interior","Rosana",1]],[["06:10","07:00","TRX","AADD 2","Andrés V.",0],["06:10","07:00","BodyPump™","AADD 1","Mel Baró",0],["06:10","07:00","Estudi Pilates","Estudi Pilates","Nuria M.",1],["07:10","08:00","HBX Boxing","AADD 2","Ferran García",0],["07:10","08:00","TBC","AADD 1","Ferran García",0],["07:10","08:00","Cycling","Sala Cycling","Nuria M.",0],["07:15","08:00","Tècnica natació","Piscina interior","Mariona Salvany",0],["08:10","09:00","Mobility","AADD 2","Nuria M.",0],["08:10","09:00","BodyPump™","AADD 1","Mel Baró",0],["08:15","09:00","Aiguagym","Piscina interior","Mariona Salvany",0],["09:00","09:30","Glutis","Zona funcional","Andrés V.",0],["09:10","10:00","Ioga","AADD 1","Alba Moreno",0],["09:15","10:00","Aiguagym","Piscina interior","Mariona Salvany",0],["09:30","10:20","HBX Boxing","AADD 2","Ferran García",0],["10:10","11:00","Zumba®","AADD 1","Yorgis G.",0],["10:15","11:00","Functional Training","Zona funcional","Edu Ramos",0],["10:30","11:20","Estudi Pilates","Estudi Pilates","Gabriel Cintas",1],["10:30","11:20","Pilates","AADD 2","Virginia Jacquet",0],["11:00","11:30","Glutis","AADD 1","Edu Ramos",0],["11:00","11:45","Curset natació","Piscina interior","Mariona Salvany",1],["13:40","14:30","BodyPump™","AADD 1","Mel Baró",0],["13:45","14:30","Functional Training","Zona funcional","Pep A.",0],["14:40","15:30","GAC","AADD 1","Ferran García",0],["15:30","16:00","Lowerbody","AADD 1","Ferran García",0],["16:10","17:00","Zumba®","AADD 1","Yorgis G.",0],["16:15","17:00","Aquamamis","Piscina interior","Rosana",1],["17:00","17:30","Upperbody","AADD 1","Ferran García",0],["17:10","18:00","Estudi Pilates","Estudi Pilates","César Terg",1],["17:15","18:00","Tabata","Zona funcional","Andrés V.",0],["17:30","18:00","Lowerbody","AADD 1","Ferran García",0],["17:30","18:15","Curset natació","Piscina interior","Rosana",1],["18:10","19:00","Cycling","Sala Cycling","Helena C.",0],["18:10","19:00","BodyPump™","AADD 1","Víctor F.",0],["18:10","19:00","Estudi Pilates","Estudi Pilates","César Terg",1],["18:10","19:00","Mobility","AADD 2","Nuria M.",0],["18:15","19:00","Curset natació","Piscina interior","Rosana",1],["18:15","19:00","Functional Training","Zona funcional","Andrés V.",0],["19:10","20:00","K1 Speed","AADD 2","Ali El Ameri",0],["19:10","20:00","Estudi Pilates","Estudi Pilates","César Terg",1],["19:10","20:00","Cycling","Sala Cycling","Helena C.",0],["19:15","20:00","Aiguafit","Piscina interior","Rosana",0],["19:15","20:00","Tabata","AADD 1","Andrés V.",0],["19:15","20:00","Functional Training","Zona funcional","Edu Ramos",0],["20:00","20:30","Abdominals","AADD 1","Edu Ramos",0],["20:10","21:00","Ioga","AADD 2","Alba Moreno",0],["20:15","21:00","Functional Training","Zona funcional","Andrés V.",0]],[["06:10","07:00","GAC","AADD 2","Oriol M.",0],["06:15","07:00","HIIT","AADD 1","Ferran García",0],["07:10","08:00","Estudi Pilates","Estudi Pilates","Oriol M.",1],["07:15","08:00","Aiguagym","Piscina interior","Mariona Salvany",0],["07:15","08:00","HIIT","AADD 1","Ferran García",0],["08:10","09:00","Esquena sana","AADD 2","Oriol M.",0],["08:15","09:00","Aiguagym","Piscina interior","Mariona Salvany",0],["08:15","09:00","Functional Training","Zona funcional","Ferran García",0],["09:00","09:30","Glutis","AADD 1","Oriol M.",0],["09:15","10:00","Aiguagym","Piscina interior","Mariona Salvany",0],["09:30","10:20","TBC","AADD 1","Nuria M.",0],["09:30","10:20","Pilates","AADD 2","César Terg",0],["09:30","10:20","Estudi Pilates","Estudi Pilates","Oriol M.",1],["09:30","10:20","Cycling","Sala Cycling","Oscar López",0],["10:30","11:20","Estudi Pilates","Estudi Pilates","Oriol M.",1],["10:30","11:20","Mobility","AADD 1","Nuria M.",0],["10:30","11:20","Espai Estira","AADD 2","Tomàs Méndez",0],["11:30","12:15","Aquamamis","Piscina interior","Mariona Salvany",1],["11:30","12:20","Free Dance","AADD 1","César Terg",0],["13:40","14:30","Cycling","Sala Cycling","Pep A.",0],["13:45","14:30","Hipopressius","AADD 1","Cristina Pradas",0],["13:45","14:30","Functional Training","Zona funcional","Edu Ramos",0],["15:10","16:00","HBX Boxing","AADD 2","Ferran García",0],["15:15","16:00","Hipopressius","AADD 1","Cristina Pradas",0],["15:30","16:15","Aiguacardio","Piscina interior","Rosana",0],["16:10","17:00","Espai Estira","AADD 2","Ferran García",0],["17:10","18:00","Pilates","AADD 2","Quim I.",0],["17:15","18:00","Functional Training","Zona funcional","Andrés V.",0],["17:30","18:15","Curset natació","Piscina interior","Rosana",1],["18:00","18:30","Glutis","Zona funcional","Andrés V.",0],["18:10","19:00","Cycling","Sala Cycling","Oscar López",0],["18:10","19:00","BodyPump™","AADD 1","Mara Hernández",0],["18:10","19:00","Estudi Pilates","Estudi Pilates","Oriol M.",1],["18:10","19:00","Hipoioga","AADD 2","Cristina Pradas",0],["18:15","19:00","Curset natació","Piscina interior","Rosana",1],["18:30","19:00","Abdominals","Zona funcional","Andrés V.",0],["19:10","20:00","Estudi Pilates","Estudi Pilates","Oriol M.",1],["19:10","20:00","Cycling","Sala Cycling","Oscar López",0],["19:10","20:00","BodyCombat™","AADD 1","Víctor F.",0],["19:15","20:00","Aiguatonic","Piscina interior","Mariona Salvany",0],["19:15","20:00","Functional Training","Zona funcional","Ferran García",0],["19:15","20:00","HIIT","AADD 2","Andrés V.",0],["20:00","20:30","Glutis","AADD 2","Andrés V.",0],["20:10","21:00","Zumba®","AADD 1","Yorgis G.",0],["20:15","21:00","Curset natació","Piscina interior","Rosana",1],["20:30","21:00","Abdominals","AADD 2","Andrés V.",0]],[["06:10","07:00","Estudi Pilates","Estudi Pilates","Nuria M.",1],["06:15","07:00","Tabata","AADD 1","Andrés V.",0],["07:10","08:00","Cycling","Sala Cycling","Oscar López",0],["07:15","08:00","Tècnica natació","Piscina interior","Ferran García",0],["07:15","08:00","Functional Training","Zona funcional","Andrés V.",0],["08:00","08:30","Abdominals","AADD 1","Andrés V.",0],["08:30","09:00","Lowerbody","AADD 1","Andrés V.",0],["09:00","09:30","Upperbody","AADD 1","Andrés V.",0],["09:15","10:00","Aiguagym","Piscina interior","Ferran García",0],["09:30","10:20","TBC","AADD 1","Oscar López",0],["09:30","10:20","Ioga","AADD 2","Anabel Gómez",0],["10:30","11:15","Hipopressius","AADD 2","Cristina Pradas",0],["13:40","14:30","TBC","AADD 1","Edu Ramos",0],["13:45","14:30","Tabata","AADD 2","Andrés V.",0],["14:30","15:20","BodyPump™","AADD 1","Oriol M.",0],["15:15","16:00","Functional Training","Zona funcional","Edu Ramos",0],["16:10","17:00","TBC","AADD 1","César Terg",0],["16:15","17:00","Aquamamis","Piscina interior","Rosana",1],["17:10","18:00","BodyPump™","AADD 1","Oriol M.",0],["17:10","18:00","Pilates","AADD 2","César Terg",0],["17:30","18:15","Curset natació","Piscina interior","Rosana",1],["18:10","19:00","GAC","AADD 2","Edu Ramos",0],["18:10","19:00","Free Dance","AADD 1","César Terg",0],["18:10","19:00","Cycling","Sala Cycling","Nuria M.",0],["18:15","19:00","Curset natació","Piscina interior","Rosana",1],["18:15","19:00","Functional Training","Zona funcional","Oriol M.",0],["19:10","20:00","Cycling","Sala Cycling","Santi P.",0],["19:10","20:00","Pilates","AADD 2","César Terg",0],["19:10","20:00","TBC","AADD 1","Mara Hernández",0],["19:10","20:00","Estudi Pilates","Estudi Pilates","Noemí Morales",1],["19:15","20:00","Functional Training","Zona funcional","Edu Ramos",0],["19:15","20:00","Aiguafuncional","Piscina interior","Rosana",0],["20:10","21:00","Estudi Pilates","Estudi Pilates","Noemí Morales",1],["20:10","21:00","BodyPump™","AADD 1","Mara Hernández",0]],[["06:10","07:00","TBC","AADD 1","Edu Ramos",0],["06:15","07:00","Functional Training","Zona funcional","Oriol M.",0],["07:10","08:00","GAC","AADD 1","Edu Ramos",0],["07:15","08:00","Aiguagym","Piscina interior","Mariona Salvany",0],["07:15","08:00","Tabata","AADD 2","Oriol M.",0],["08:10","09:00","Espai Estira","AADD 2","Miriam Sánchez",0],["08:10","09:00","TBC","AADD 1","Edu Ramos",0],["08:15","09:00","Aiguagym","Piscina interior","Mariona Salvany",0],["08:15","09:00","HIIT","Zona funcional","Oriol M.",0],["09:00","09:30","Abdominals","AADD 1","Edu Ramos",0],["09:15","10:00","Aiguagym","Piscina interior","Mariona Salvany",0],["09:30","10:20","GAC","AADD 1","Jon I.",0],["09:30","10:20","Esquena sana","AADD 2","César Terg",0],["09:30","10:20","Estudi Pilates","Estudi Pilates","Oriol M.",1],["10:30","11:15","Functional Training","Zona funcional","Oriol M.",0],["10:30","11:20","Estudi Pilates","Estudi Pilates","César Terg",1],["10:30","11:20","Ioga","AADD 2","Virginia Jacquet",0],["12:30","13:20","Estudi Pilates","Estudi Pilates","César Terg",1],["13:40","14:30","Cycling","Sala Cycling","Pep A.",0],["15:20","16:10","BodyPump™","AADD 1","Andrés V.",0],["15:30","16:15","Aiguafit","Piscina interior","Rosana",0],["16:15","17:00","Functional Training","Zona funcional","Edu Ramos",0],["17:10","18:00","GAC","AADD 1","Edu Ramos",0],["17:30","18:15","Curset natació","Piscina interior","Rosana",1],["18:10","19:00","Zumba®","AADD 1","Yorgis G.",0],["18:10","19:00","Pilates","AADD 2","Virginia Jacquet",0],["18:15","19:00","Curset natació","Piscina interior","Rosana",1],["18:15","19:00","Functional Training","Zona funcional","Gabriel Cintas",0],["19:00","19:45","Curset natació","Piscina interior","Rosana",1],["19:10","20:00","Ioga","AADD 2","Virginia Jacquet",0],["19:15","20:00","Functional Training","Zona funcional","Andrés V.",0],["20:15","21:00","Curset natació","Piscina interior","Rosana",1]],[["09:10","10:00","BodyPump™","AADD 1","Víctor F.",0],["09:10","10:00","Cycling","Sala Cycling","Isaac Viniegra",0],["09:15","10:00","Aiguagym","Piscina interior","Mariona Salvany",0],["09:30","10:15","Functional Training","Zona funcional","Oriol M.",0],["10:10","11:00","Cycling","Sala Cycling","Isaac Viniegra",0],["10:10","11:00","BodyPump™","AADD 1","Víctor F.",0],["10:15","11:05","Estudi Pilates","Estudi Pilates","Oriol M.",1],["10:30","11:15","Curset natació","Piscina interior","Mariona Salvany",1],["11:10","12:00","BodyCombat™","AADD 1","Víctor F.",0],["11:15","12:00","Curset natació","Piscina interior","Mariona Salvany",1],["11:15","12:00","Functional Training","Zona funcional","Isaac Viniegra",0],["12:00","12:45","Curset natació","Piscina interior","Mariona Salvany",1]],[["09:10","10:00","Cycling","Sala Cycling","Joan Quintana",0],["09:30","10:15","Functional Training","Zona funcional","Mara Hernández",0],["10:10","11:00","Cycling","Sala Cycling","Joan Quintana",0],["10:30","11:45","Functional Training","Zona funcional","Edu Ramos",0],["19:15","20:00","Aiguagym","Piscina interior","Gabriel Cintas",0]]];
+var HC={};
+[['aigua','Aiguagym','Aquamamis','Aiguatonic','Aiguafit','Aiguacardio','Aiguafuncional','Curset natació','Tècnica natació'],
+ ['cos','Pilates','Estudi Pilates','Ioga','Hipoioga','Hipopressius','Esquena sana','Mobility','Espai Estira','Foam Roller'],
+ ['cardio','Cycling','BodyCombat™','Zumba®','Free Dance','K1 Speed'],
+ ['forca','BodyPump™','TBC','GAC','Glutis','Abdominals','Lowerbody','Upperbody'],
+ ['func','Functional Training','Tabata','TRX','HBX Boxing','HIIT']].forEach(function(g){for(var i=1;i<g.length;i++)HC[g[i]]=g[0]});
+var DN=['Dl','Dt','Dc','Dj','Dv','Ds','Dg'],DD=[9,10,11,12,13,14,15];
+var tdy=new Date(),tIdx=(tdy.getFullYear()===2026&&tdy.getMonth()===10&&tdy.getDate()>=9&&tdy.getDate()<=15)?tdy.getDate()-9:-1;
+var state={cat:'all',int:0,day:Math.max(0,tIdx)};
+function chips(el,items,get,set){
+ el.innerHTML='';
+ items.forEach(function(it){
+  var b=document.createElement('button');b.type='button';b.className='chip';
+  b.setAttribute('aria-pressed',get()===it.v);
+  b.innerHTML=(it.dot?'<span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:'+it.dot+'"></span>':'')+it.l;
+  b.onclick=function(){set(it.v);render()};
+  el.appendChild(b);
+ });
+}
+function keep(a){return (state.cat==='all'||a[1]===state.cat)&&(state.int===0||a[2]===state.int)}
+function render(){
+ chips(document.getElementById('f-cat'),[{v:'all',l:'Totes',dot:'#8A8A84'}].concat(Object.keys(CATS).map(function(k){return{v:k,l:CATS[k][0],dot:CATS[k][1]}})),function(){return state.cat},function(v){state.cat=v});
+ chips(document.getElementById('f-int'),INT.map(function(l,i){return{v:i,l:i?l:'Totes'}}),function(){return state.int},function(v){state.int=v});
+ var list=ACT.filter(keep);
+ document.getElementById('f-count').textContent=list.length+' activitats';
+ document.getElementById('grid-empty').hidden=list.length>0;
+ document.getElementById('grid').innerHTML=list.map(function(a,n){
+  var c=CATS[a[1]];
+  var bars='<span class="bars" aria-hidden="true"><span class="f" style="height:8px"></span><span style="height:12px" class="'+(a[2]>1?'f':'')+'"></span><span style="height:16px" class="'+(a[2]>2?'f':'')+'"></span></span>';
+  return '<button type="button" class="acard" data-rev style="--i:'+(n%4)+'" data-i="'+ACT.indexOf(a)+'" aria-label="Obre la fitxa de '+a[0]+'">'
+   +'<span class="ap" style="background-image:linear-gradient(rgba(12,13,12,.04),rgba(12,13,12,.42)),url(\''+a[4]+'\')"><span style="position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:rgba(12,13,12,.55);padding:5px 12px;border-radius:999px">'+c[0]+'</span></span>'
+   +'<span class="ab"><span class="at">'+a[0]+'</span><span style="font-size:13px;color:var(--mut);line-height:1.45">'+(DESC[a[0]]||'')+'</span><span style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--mut);margin-top:auto"><span>'+a[3]+' min</span><span style="display:flex;align-items:center;gap:8px">'+INT[a[2]]+bars+'</span></span></span>'
+   +'</button>';
+ }).join('');
+ var fd=document.getElementById('f-day');fd.innerHTML='';
+ DN.forEach(function(l,i){
+  var b=document.createElement('button');b.type='button';b.className='day'+(i===tIdx?' today':'');b.innerHTML=l+'<small>'+DD[i]+'</small>';
+  b.setAttribute('aria-label',['Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte','Diumenge'][i]+' '+DD[i]+(i===tIdx?' (avui)':''));
+  b.setAttribute('aria-pressed',state.day===i);b.onclick=function(){state.day=i;render()};fd.appendChild(b);
+ });
+ var BL=[['Matí',0,720],['Migdia i tarda',720,1020],['Vespre',1020,1440]],html='',n=0;
+ var rows=HOR[state.day].filter(function(r){return state.cat==='all'||HC[r[2]]===state.cat});
+ BL.forEach(function(bk){
+  var rs=rows.filter(function(r){var m=+r[0].slice(0,2)*60+ +r[0].slice(3);return m>=bk[1]&&m<bk[2]});
+  if(!rs.length)return;
+  html+='<div class="hb">'+bk[0]+'<i></i><span>'+rs.length+'</span></div>';
+  rs.forEach(function(r){
+   var c=CATS[HC[r[2]]];
+   html+='<div class="hr rv" data-rev style="--i:'+Math.min(n++,9)+'"><span class="tn">'+r[0]+'<small>– '+r[1]+'</small></span><span aria-hidden="true" style="width:14px;height:14px;border-radius:50%;background:'+c[1]+';border:1px solid #0C0D0C"></span><span class="an">'+r[2]+(r[5]?'<em title="Activitat amb tarifa pròpia">€</em>':'')+'</span><span class="rm">'+r[3]+'</span><span class="ins">'+r[4]+'</span></div>';
+  });
+ });
+ document.getElementById('tt').innerHTML=html||'<p style="margin:0;padding:24px 0;color:var(--ink2)">Cap sessió d\'aquest tipus aquest dia.</p>';
+ if(window.MO&&MO.scan){MO.scan(document.getElementById('grid'));MO.scan(document.getElementById('tt'))}
+}
+render();
+
+/* ---------- Fitxa d'activitat ---------- */
+var fx=document.getElementById('ficha');
+function openF(i){
+ var a=ACT[i],c=CATS[a[1]];
+ var room=a[0]==='Cycling'?'Sala Cycling':c[2];
+ document.getElementById('fx-img').style.backgroundImage="linear-gradient(rgba(12,13,12,0),rgba(12,13,12,.5)),url('"+a[4]+"')";
+ var cat=document.getElementById('fx-cat');cat.textContent=c[0];cat.style.color=c[1];
+ document.getElementById('fx-name').textContent=a[0];
+ document.getElementById('fx-desc').textContent=DESC[a[0]]||'';
+ document.getElementById('fx-meta').textContent=a[3]+' min · Intensitat '+INT[a[2]].toLowerCase()+' · '+room;
+ fx.hidden=false;
+}
+document.getElementById('grid').addEventListener('click',function(e){var b=e.target.closest('[data-i]');if(b)openF(+b.getAttribute('data-i'))});
+fx.addEventListener('click',function(e){if(e.target===fx)fx.hidden=true});
+document.getElementById('fx-close').addEventListener('click',function(){fx.hidden=true});
+document.getElementById('fx-horari').addEventListener('click',function(){
+ fx.hidden=true;
+ if(curPage()==='serveis'){document.getElementById('horari').scrollIntoView({behavior:'smooth'})}
+ else{window.__goto='horari';location.hash='serveis'}
+});
+
+/* ---------- Modal visita ---------- */
+var vis=document.getElementById('vis');
+document.querySelectorAll('.js-vis').forEach(function(b){b.addEventListener('click',function(){document.getElementById('v-ok').hidden=true;vis.hidden=false})});
+vis.addEventListener('click',function(e){if(e.target===vis)vis.hidden=true});
+document.getElementById('vis-close').addEventListener('click',function(){vis.hidden=true});
+document.getElementById('vform').addEventListener('submit',function(e){e.preventDefault();document.getElementById('v-ok').hidden=false});
+
+
+/* ---------- Preus ---------- */
+var PZ=[
+ {id:'quo',n:'Quotes de soci',d:'Les quotes per ser soci del club.',nt:[],any:1,quo:1,
+  q:[['Quota de soci','Matí o full',null],['Quota de manteniment','Per a quan, durant un temps, no pots venir al club.',18.50],['Quota de lesió','Per a quan estàs lesionat, amb informe mèdic.',9.25],['La Mútua de Granollers','Quota bàsica especial per a socis.',11.45]]},
+ {id:'pil',n:'Pilates Reformer',d:'Estudi amb torre. Classes de grup per setmana, o entrenament personal.',
+  nt:['Reservar plaça durant un mes: 17,40 € / mes.','Descomptes per a socis en Pilates Reformer.'],
+  bl:[{t:'Classes de grup',soc:1,h:['Classes per setmana','Al mes','Al trimestre'],r:[['1 classe',[58.00,156.63],[68.25,184.28]],['2 classes',[92.81,250.62],[109.20,294.85]],['3 classes',[121.81,328.94],[143.33,386.99]]]},
+      {t:'Entrenament personal de Pilates Reformer',h:['Modalitat','Individual','En parella<small>per persona</small>'],r:[['1 sessió',[47.55,30.35]],['Bo 10+1',[475.45,303.85]],['Bo 20+3',[950.95,607.75]]]}]},
+ {id:'nat',n:'Natació',d:'Cursos 2026-2027 a la piscina interior climatitzada, per edats.',
+  nt:['Mínim de 36 sessions per curs; l\'últim mes es paga proporcional a les sessions que queden.','5% de descompte al segon germà.'],
+  sub:['Bebès · 6 mesos–2 anys','Infantil · 3–13 anys','Adults · +14 anys'],
+  grp:[[[65.00,76.95],[124.75,146.78],[175.45,206.40],[336.85,396.30]],[[56.25,66.15],[108.00,127.00],[151.85,178.65],[291.55,343.00]],[[48.70,57.30],[93.55,110.00],[131.55,154.75],[252.55,297.10]]],
+  lab:[['4 sessions','1 dia per setmana','Mensual'],['8 sessions','2 dies per setmana','Mensual'],['12 sessions','1 dia per setmana','Trimestral'],['24 sessions','2 dies per setmana','Trimestral']]},
+ {id:'per',n:'Entrenament personal',d:'Sessions un a un amb entrenador, de 30 minuts o d\'una hora.',
+  nt:['Descomptes per a socis en entrenaments personals.'],
+  bl:[{t:'Fitness',soc:1,h:['Concepte','30 minuts','1 hora'],r:[['1 sessió',[23.95,42.45],[26.80,47.55]],['Bo 10+1',[239.50,424.50],[268.20,475.45]],['Bo 20+3',[478.80,849.00],[536.25,950.95]]]}]},
+ {id:'lud',n:'Ludoteca',d:'De 3 a 13 anys, de dilluns a divendres de 17:00 a 20:30 h.',nt:['El preu és el mateix per a socis i no socis.'],any:1,
+  bl:[{t:'Tarifa',h:['Concepte','Preu'],r:[['Per dia i infant',[6.50]],['Bo de 10 dies',[56.00]]]}]},
+ {id:'cas',n:'Casal d\'estiu',d:'Tarifes de l\'estiu 2026 (del 22 de juny al 31 de juliol, de 3 a 13 anys).',nt:['Inscripció i menjar tenen el mateix preu per a socis i no socis.'],
+  bl:[{t:'Casal 2026',soc:1,h:['Concepte','Preu'],r:[['9–13 h · 1 setmana',[99.50],[113.70]],['9–17 h · 1 setmana',[148.80],[169.40]],['15–17 h · 1 setmana',[47.15],[52.00]],['9–13 h · casal complet',[495.00],[561.00]],['9–17 h · casal complet',[742.50],[841.50]],['Acollida de 8 a 9 h',[7.15],[8.15]],['1 dia (9–13 h)',[30.25],[36.30]],['Complement 15–17 h, 1 dia',[12.70],[14.50]],['Menjar',[9.90],[9.90]],['Inscripció (inclou samarreta)',[16.50],[16.50]]]}]}
+];
+var pz={t:'quo',soc:true,g:0};
+function eur(v){return v.toFixed(2).replace('.',',')}
+function pBlock(b,soc,i0){
+ var c=b.h.length-1,o='<div class="pt"><h4>'+b.t+(b.soc?'<span class="tg">'+(soc?'Socis':'No socis')+'</span>':'')+'</h4>';
+ o+='<div class="pr hd" style="--c:'+c+'"><span></span>'+b.h.slice(1).map(function(h){return '<span class="v">'+h+'</span>'}).join('')+'</div>';
+ b.r.forEach(function(r,i){
+  var vals=b.soc?(soc?r[1]:r[2]):r[1];
+  o+='<div class="pr" style="--c:'+c+';--i:'+(i0+i)+'"><span class="l">'+r[0]+'</span>'+vals.map(function(v){return '<span class="v">'+eur(v)+'<small>€</small></span>'}).join('')+'</div>';
+ });
+ return o+'</div>';
+}
+function pRender(){
+ var T=PZ.filter(function(x){return x.id===pz.t})[0];
+ var tabs=document.getElementById('ptabs');tabs.innerHTML='';
+ PZ.forEach(function(x){
+  var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('role','tab');b.setAttribute('aria-selected',x.id===pz.t);b.setAttribute('aria-pressed',x.id===pz.t);b.textContent=x.n;
+  b.onclick=function(){pz.t=x.id;pz.g=0;pRender()};tabs.appendChild(b);
+ });
+ var sg=document.createElement('div');sg.className='seg'+(T.any?' off':'');sg.setAttribute('role','group');sg.setAttribute('aria-label','Socis o no socis');
+ [['Socis',true],['No socis',false]].forEach(function(o){
+  var b=document.createElement('button');b.type='button';b.textContent=o[0];b.setAttribute('aria-pressed',pz.soc===o[1]);
+  b.onclick=function(){pz.soc=o[1];pRender()};sg.appendChild(b);
+ });
+ tabs.appendChild(sg);
+ var left='<div><h3>'+T.n+'</h3><p class="pd">'+T.d+'</p><ul class="pn">'+T.nt.map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul></div>';
+ var right='';
+ if(T.id==='nat'){
+  right+='<div class="psub" role="group" aria-label="Grup">'+T.sub.map(function(l,i){return '<button type="button" class="chip" data-g="'+i+'" aria-pressed="'+(pz.g===i)+'">'+l+'</button>'}).join('')+'</div>';
+  right+='<div class="pt"><h4>Curs 2026-2027<span class="tg">'+(pz.soc?'Socis':'No socis')+'</span></h4><div class="pr hd" style="--c:2"><span></span><span class="v">Pagament</span><span class="v">Preu</span></div>';
+  T.lab.forEach(function(l,i){var v=T.grp[pz.g][i][pz.soc?0:1];right+='<div class="pr" style="--c:2;--i:'+i+'"><span class="l">'+l[0]+'<small>'+l[1]+'</small></span><span class="v" style="font-family:var(--sans);font-size:15px;color:var(--ink2)">'+l[2]+'</span><span class="v">'+eur(v)+'<small>€</small></span></div>'});
+  right+='</div>';
+ }else if(T.bl){
+  var k=0;T.bl.forEach(function(b){right+=pBlock(b,pz.soc,k);k+=b.r.length});
+ }
+ if(T.quo){
+  right='<div class="pt"><h4>Quotes mensuals</h4>';
+  T.q.forEach(function(r,i){right+='<div class="pr" style="--c:1;--i:'+i+'"><span class="l">'+r[0]+'<small>'+r[1]+'</small></span><span class="v">'+(r[2]==null?'<em class="am">A mida</em>':eur(r[2])+'<small>€ / mes</small>')+'</span></div>'});
+  right+='</div><button type="button" class="btn btn-k js-vis2" style="margin-top:28px">Concerta una visita</button>';
+ }
+ document.getElementById('pnl').innerHTML=left+'<div>'+right+'</div>';
+ if(T.id==='pil'){var n=document.querySelector('#pnl .pn li');if(n)n.innerHTML='Reservar plaça durant un mes: <b style="font-family:var(--serif);font-weight:400;font-size:20px;color:var(--lila)">17,40 €</b> / mes.'}
+}
+document.getElementById('pnl').addEventListener('click',function(e){var b=e.target.closest('[data-g]');if(b){pz.g=+b.getAttribute('data-g');pRender()}});
+document.getElementById('pnl').addEventListener('click',function(e){if(e.target.closest('.js-vis2')){document.getElementById('v-ok').hidden=true;vis.hidden=false}});
+pRender();
+
+/* ---------- Galería ---------- */
+var GAL=[
+ ['img/terrassa.jpg','La terrassa, des de l\'aire','g2',['padel','club']],
+ ['img/padel.jpg','Pistes de pàdel al capvespre','bw',['padel']],
+ ['img/dirigides-sala.jpg','Sala d\'activitats dirigides','gw',['sales','dirigides']],
+ ['img/fitness.jpg','Sala fitness · Technogym','',['sales']],
+ ['img/piscina.jpg','Piscina interior climatitzada','g2',['aigua']],
+ ['img/a-hbx-hd.jpg','HBX Boxing','bw g2',['dirigides']],
+ ['img/spa.jpg','Spa i zona d\'aigües','',['aigua']],
+ ['img/rest2.jpg','El restaurant','g2',['club']],
+ ['img/a-zumba.jpg','Zumba','',['dirigides']],
+ ['img/act-cardio.jpg','Sala Cycling','bw',['sales','dirigides']],
+ ['img/a-tabata.jpg','Tabata','',['dirigides']],
+ ['img/fitness2.jpg','L\'Espai per dins','',['sales','club']],
+ ['img/a-aiguagym.jpg','Aiguagym','gw',['aigua','dirigides']],
+ ['img/casal.jpg','Escola de pàdel','bw',['padel']]
+];
+var GCAT=[['sales','Sales'],['dirigides','Activitats dirigides'],['aigua','Aigua i spa'],['padel','Pàdel'],['club','El club']];
+var GAR=['4/5','3/2','3/4','1/1','4/5','3/4','16/10','3/4','1/1','3/2','4/5','16/10','3/4','1/1'];
+var GSC=[1,.8,1,.72,.94,1,.76,.96,.72,.88,1,.78,.94,.82];
+var GOF=['-3vh','3vh','-2vh','4vh','-4vh','2vh','-3vh','4vh','-1vh','3vh','-4vh','2vh','-2vh','3vh'];
+var gcur='all',gvis=[];
+function gHas(k){return GAL.filter(function(g){return k==='all'||g[3].indexOf(k)>-1}).length}
+function gChips(){
+ var el=document.getElementById('gfil');el.innerHTML='';
+ [['all','Totes']].concat(GCAT.filter(function(c){return gHas(c[0])>0})).forEach(function(c){
+  var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed',gcur===c[0]);
+  b.innerHTML=c[1]+'<sup>'+gHas(c[0])+'</sup>';
+  b.onclick=function(){if(gcur===c[0])return;gcur=c[0];gRender(true)};
+  el.appendChild(b);
+ });
+}
+function gRender(user){
+ var cort=document.getElementById('cort');
+ gvis=GAL.map(function(g,i){return i}).filter(function(i){return gcur==='all'||GAL[i][3].indexOf(gcur)>-1});
+ cort.innerHTML=gvis.map(function(gi,n){
+  var g=GAL[gi],k=n%GAR.length;
+  return '<button type="button" class="cf'+(g[2].indexOf('bw')>-1?' bw':'')+'" data-g="'+gi+'" data-cur="Amplia" style="--ar:'+GAR[(gi+n)%GAR.length]+';--sc:'+GSC[(gi+n)%GSC.length]+';--off:'+GOF[k]+';--n:'+Math.min(n,6)+'" aria-label="Amplia: '+g[1]+'"><span class="door d-arch" data-door="x"><img class="pic" src="'+g[0]+'" alt="'+g[1]+'" loading="lazy" decoding="async"></span><span class="cap"><i>'+String(n+1).padStart(2,'0')+'</i>'+g[1]+'</span></button>';
+ }).join('');
+ document.getElementById('cor-t').textContent='/ '+String(gvis.length).padStart(2,'0');
+ document.getElementById('cor-n').textContent='01';
+ gChips();
+ if(user){
+  cort.classList.remove('swap');void cort.offsetWidth;cort.classList.add('swap');
+  if(window.MO&&MO.on){
+   MO.scan(cort);MO.after();
+   var cor=document.getElementById('cor'),y=cor.getBoundingClientRect().top+window.pageYOffset-(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hh'))||0);
+   if(window.pageYOffset>y)window.scrollTo(0,y);
+   MO.after();
+  }
+ }
+}
+gRender(false);
+var lb=document.getElementById('lb');
+document.getElementById('cort').addEventListener('click',function(e){
+ var b=e.target.closest('[data-g]');if(!b)return;
+ var g=GAL[+b.getAttribute('data-g')];
+ document.getElementById('lb-img').src=g[0];
+ document.getElementById('lb-img').alt=g[1];
+ document.getElementById('lb-cap').textContent=g[1];
+ lb.hidden=false;
+});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.hidden=true});
+document.getElementById('lb-close').addEventListener('click',function(){lb.hidden=true});
+
+
+/* ---------- Menú hamburguesa (mòbil i tauleta) ---------- */
+var burger=document.getElementById('burger'),mnu=document.getElementById('mnu'),RT=document.documentElement;
+function menu(o){
+ RT.classList.toggle('menu-open',o);
+ burger.setAttribute('aria-expanded',String(o));burger.setAttribute('aria-label',o?'Tanca el menú':'Obre el menú');
+ mnu.setAttribute('aria-hidden',String(!o));
+}
+burger.addEventListener('click',function(){menu(!RT.classList.contains('menu-open'))});
+mnu.addEventListener('click',function(e){if(e.target.closest('a,button'))menu(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&RT.classList.contains('menu-open'))menu(false)});
+window.addEventListener('resize',function(){if(innerWidth>1200&&RT.classList.contains('menu-open'))menu(false)});
+
+/* ---------- Horari en PDF ---------- */
+(function(){
+ var dl=null,a=document.getElementById('hpdf');
+ try{if(window.claude&&claude.use)claude.use('downloads').then(function(d){dl=d},function(){})}catch(x){}
+ a.addEventListener('click',function(e){
+  if(!dl||!dl.save)return;
+  e.preventDefault();
+  fetch('horari-espai-wellness.pdf').then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(bl){
+   return dl.save({filename:'Horari-Espai-Wellness-9-15-novembre-2026.pdf',data:bl});
+  }).catch(function(err){if(err&&err.code==='declined')return;window.open('horari-espai-wellness.pdf','_blank')});
+ });
+})();
+
+/* ---------- FAB contacto ---------- */
+var fb=document.getElementById('fab-btn'),fm=document.getElementById('fab-menu');
+fb.addEventListener('click',function(){
+ var open=fm.hidden;
+ fm.hidden=!open;
+ fb.setAttribute('aria-expanded',String(open));
+ document.getElementById('fab-ico').innerHTML=open?'<path d="M18 6 6 18M6 6l12 12"/>':'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>';
+});
+
+/* ---------- Formularis ---------- */
+document.getElementById('cform').addEventListener('submit',function(e){e.preventDefault();document.getElementById('f-ok').hidden=false});
+document.querySelector('#p-inici form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('nl-ok').hidden=false});
+
+/* ---------- Moviment: el motor de «portes» ----------
+   Cada seqüència té un motiu (vegeu el comentari de cada bloc). Tot es desactiva amb prefers-reduced-motion
+   i el contingut sempre queda visible si el JS falla (els estats inicials només existeixen amb html.mo). */
+var MO=(function(){
+ var M={on:false,busy:false,scan:function(){},reset:function(){},after:function(){},gate:null};
+ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduce||!('IntersectionObserver' in window))return M;
+ M.on=true;
+ var R=document.documentElement;
+ var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+ R.classList.add('mo');if(fine)R.classList.add('fine');
+ function $(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+ function cl(x,a,b){return x<a?a:x>b?b:x}
+ function sm(t){return t*t*(3-2*t)}
+ function sv(el,k,v,u){var key='_'+k;if(el[key]===undefined||Math.abs(el[key]-v)>.002){el[key]=v;el.style.setProperty(k,(+v).toFixed(3)+(u||''))}}
+ var vh=innerHeight,vw=innerWidth,hh=0,desk=vw>=900;
+ var hdr=document.querySelector('header.site');
+ var S={py:window.pageYOffset,dy:0,v:0,go:true};
+
+ /* 1 · Titulars: paraula a paraula, pujant des d'una màscara. Marca l'arribada de cada categoria. */
+ function split(el){
+  if(el._sp)return;el._sp=1;var n=0;
+  el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
+  (function walk(node){
+   Array.prototype.slice.call(node.childNodes).forEach(function(c){
+    if(c.nodeType===3){
+     var f=document.createDocumentFragment();
+     c.textContent.split(/(\s+)/).forEach(function(p){
+      if(!p)return;
+      if(/^\s+$/.test(p)){f.appendChild(document.createTextNode(' '));return}
+      var w=document.createElement('span'),i=document.createElement('span');
+      w.className='w';w.setAttribute('aria-hidden','true');i.className='wi';i.style.setProperty('--i',n++);i.textContent=p;w.appendChild(i);f.appendChild(w);
+     });
+     node.replaceChild(f,c);
+    }else if(c.nodeType===1&&c.tagName!=='BR')walk(c);
+   });
+  })(el);
+ }
+ function count(el){
+  var to=+el.getAttribute('data-count'),t0=performance.now(),d=1600;
+  (function f(now){var p=cl((now-t0)/d,0,1);el.textContent=Math.round(to*(1-Math.pow(1-p,4)));if(p<1)requestAnimationFrame(f)})(t0);
+ }
+ var io=new IntersectionObserver(function(es){es.forEach(function(en){
+  var t=en.target;
+  if(en.isIntersecting&&!t.classList.contains('in')){t.classList.add('in');if(t.hasAttribute('data-count'))count(t)}
+ })},{threshold:.2,rootMargin:'0px 0px -6% 0px'});
+ var vio=new IntersectionObserver(function(es){es.forEach(function(en){en.target._v=en.isIntersecting});S.go=true},{rootMargin:'14% 0px 14% 0px'});
+
+ var doors=[],tours=[],pars=[];
+ function buttons(root){
+  $('.btn',root).forEach(function(b){
+   if(b._rl||b.children.length||!b.textContent.trim())return;b._rl=1;
+   var t=b.textContent;b.textContent='';
+   var w=document.createElement('span'),a=document.createElement('span'),c=document.createElement('span');
+   w.className='rl';a.textContent=t;c.textContent=t;c.setAttribute('aria-hidden','true');w.appendChild(a);w.appendChild(c);b.appendChild(w);
+  });
+ }
+ M.scan=function(root){
+  root=root||document;
+  doors=doors.filter(function(d){if(d.isConnected)return true;vio.unobserve(d);return false});
+  $('[data-split]',root).forEach(function(el){split(el);io.observe(el)});
+  $('[data-rev]',root).forEach(function(el){if(!el._r){el._r=1;el.classList.add('rv');io.observe(el)}});
+  $('.rvl',root).forEach(function(el){if(!el._r){el._r=1;$('li',el).forEach(function(li,i){li.style.setProperty('--i',i)});io.observe(el)}});
+  $('[data-count]',root).forEach(function(el){if(!el._r){el._r=1;el.textContent='0';io.observe(el)}});
+  $('[data-door]',root).forEach(function(el){
+   if(el._d)return;el._d=1;el._ax=el.getAttribute('data-door');
+   el._from=+el.getAttribute('data-from')||.95;el._to=+el.getAttribute('data-to')||.35;
+   el.style.setProperty('--e','0');doors.push(el);vio.observe(el);
+  });
+  $('[data-tour]',root).forEach(function(el){if(el._d)return;el._d=1;el.style.setProperty('--e','0');tours.push(el);vio.observe(el)});
+  $('[data-par]',root).forEach(function(el){if(el._d)return;el._d=1;el._par=+el.getAttribute('data-par');pars.push(el);vio.observe(el)});
+  buttons(root);S.go=true;
+ };
+
+ /* 2 · Cortina: el hero queda fix i es retira (s'enfosqueix i recula) mentre el club el tapa. */
+ var hp=document.querySelector('.hpin'),hc=document.getElementById('inici-club'),hcov=false;
+ function heroF(){
+  if(!hp.offsetParent)return;
+  var a=hp.getBoundingClientRect(),b=hc.getBoundingClientRect();
+  var p=cl((a.bottom-b.top)/a.height,0,1);
+  sv(hp,'--hp',p);
+  var c=p>.985;if(c!==hcov){hcov=c;if(window.__hcover)window.__hcover(c)}
+ }
+
+ /* 3 · Recorregut: cada capítol és una porta (arc → marc) que s'obre al arribar; l'anterior recula sota el nou. */
+ function tourF(){
+  tours.forEach(function(el,i){
+   if(!el._v||!el.offsetParent)return;
+   var r=el.getBoundingClientRect(),e,q=0;
+   if(desk){
+    e=(vh-r.top)/(vh-(hh+10+i*14));
+    var n=tours[i+1];
+    if(n){var nr=n.getBoundingClientRect();q=cl((vh-nr.top)/(vh-(hh+10+(i+1)*14)),0,1)}
+   }else e=(vh*.98-r.top)/(vh*.55);
+   sv(el,'--e',sm(cl(e,0,1)));sv(el,'--q',q);
+  });
+ }
+
+ /* 4 · Portes soltes (vídeo del club, quotes, mosaic de serveis, marcs del passadís) + paral·laxi suau de la foto. */
+ function doorF(){
+  doors.forEach(function(el){
+   if(!el._v||!el.offsetParent)return;
+   var r=el.getBoundingClientRect(),e;
+   if(el._ax==='x')e=(vw*1.04-r.left)/(vw*.4);
+   else e=(vh*el._from-r.top)/(vh*(el._from-el._to));
+   sv(el,'--e',sm(cl(e,0,1)));
+   if(el._ax!=='x')sv(el,'--py',cl(((r.top+r.height/2)-vh/2)*-.06,-r.height*.045,r.height*.045),'px');
+  });
+  pars.forEach(function(el){
+   if(!el._v||!el.offsetParent)return;
+   var r=el.getBoundingClientRect();
+   sv(el,'--d',desk?cl(((r.top+r.height/2)-vh/2)*el._par,-36,36):0,'px');
+  });
+ }
+
+ /* 5 · Carrusel: l'scroll de la pàgina l'empeny (caminar-hi); les targetes s'inclinen amb la velocitat i la foto es desplaça dins del marc. */
+ var eq=document.getElementById('eq'),eqc=[],lsl=0,ev=0;
+ function eqCache(){eqc=$('.eqi',eq).map(function(b){return{l:b.offsetLeft+b.offsetWidth/2,i:b.querySelector('img')}})}
+ vio.observe(eq);
+ function eqF(dy){
+  if(!eq._v||!eq.offsetParent)return;
+  if(dy&&!eq.classList.contains('drag'))eq.scrollLeft+=dy*.6;
+  var sl=eq.scrollLeft,vx=sl-lsl;lsl=sl;ev+=(vx-ev)*.18;
+  sv(eq,'--v',cl(ev*.28,-8,8));
+  var c=sl+eq.clientWidth/2,W=eq.clientWidth;
+  eqc.forEach(function(o){var d=o.l-c;if(Math.abs(d)<W)sv(o.i,'--px',-d*.07,'px')});
+ }
+
+ /* 5b · Carrusel gran de la home: l'imatge al centre creix i recupera el color; les veïnes es retiren. */
+ var hx=document.getElementById('hx'),hxc=[];
+ function hxCache(){hxc=$('.hxi',hx).map(function(a){return{l:a.offsetLeft,w:a.offsetWidth,f:a.querySelector('.hxf'),i:a.querySelector('.hxp'),c:a.querySelector('.hxc')}})}
+ vio.observe(hx);
+ function hxF(){
+  if(!hx._v||!hx.offsetParent)return;
+  var W=hx.clientWidth,c=hx.scrollLeft+W/2;
+  hxc.forEach(function(o){
+   var d=o.l+o.w/2-c,f=1-cl(Math.abs(d)/(W*.62),0,1);f=f*f*(3-2*f);
+   sv(o.f,'--f',f);sv(o.i,'--px',-d*.09,'px');
+  });
+ }
+
+ /* 6 · Serveis: la llista és l'índex; l'escenari fix mostra el servei que passa pel centre amb un tall d'«obertura». */
+ var srws=[],stgs=[],act=-1,zc=1,svt=0,cap=document.getElementById('svc-cap');
+ function setAct(i){
+  if(i===act||!stgs[i])return;act=i;
+  srws.forEach(function(r,j){r.classList.toggle('act',j===i)});
+  var L=stgs[i];L.style.zIndex=++zc;L.classList.add('on');
+  var s=SRV[i];
+  cap.innerHTML='<span class="k">'+s[2]+'</span><span class="t">'+s[1]+'</span><span class="c">'+s[4].slice(0,4).map(function(c){return '<span>'+c+'</span>'}).join('')+'</span><span class="o">Obre la fitxa ↗</span>';
+  cap.classList.remove('sw');void cap.offsetWidth;cap.classList.add('sw');
+  clearTimeout(svt);
+  svt=setTimeout(function(){
+   stgs.forEach(function(g,j){if(j!==act&&g.classList.contains('on')){g.classList.add('ns');g.classList.remove('on')}});
+   void stgs[0].offsetWidth;stgs.forEach(function(g){g.classList.remove('ns')});
+  },980);
+ }
+ function svcInit(){
+  srws=$('.srw');stgs=$('.stg');
+  srws.forEach(function(r,i){r.addEventListener('mouseenter',function(){if(desk&&fine)setAct(i)})});
+  setAct(0);
+ }
+ function svcF(){
+  if(!desk||!srws.length||!srws[0].offsetParent||!S.dy)return;
+  var ln=vh*.5,best=0,bd=1e9;
+  srws.forEach(function(r,i){var b=r.getBoundingClientRect(),d=Math.abs(b.top+b.height/2-ln);if(d<bd){bd=d;best=i}});
+  setAct(best);
+ }
+
+ /* 7 · Galeria: el passadís. L'scroll vertical fa caminar horitzontalment; els marcs s'obren en arribar i s'inclinen amb la velocitat. */
+ var cor=document.getElementById('cor'),cort=document.getElementById('cort'),cfs=[],cmax=0,cn=document.getElementById('cor-n'),cb=document.getElementById('cor-b'),cnl=-1;
+ function corSize(){
+  if(!cor.offsetParent)return;
+  cort.style.transform='none';
+  var tw=cort.scrollWidth;cmax=Math.max(0,tw-vw);
+  cor.style.height=((vh-hh)+cmax/1.1)+'px';
+  cfs=$('.cf',cort).map(function(b){return{l:b.offsetLeft,w:b.offsetWidth,i:b.querySelector('.pic')}});
+ }
+ function corF(){
+  if(!cor.offsetParent)return;
+  var r=cor.getBoundingClientRect(),tot=cor.offsetHeight-(vh-hh);
+  var p=tot>0?cl((hh-r.top)/tot,0,1):0,tx=-p*cmax;
+  cort.style.transform='translate3d('+tx.toFixed(1)+'px,0,0)';
+  sv(cort,'--sv',cl(S.v*.4,-9,9));
+  sv(cb,'--cp',p);
+  var best=Math.round(p*(cfs.length-1));
+  cfs.forEach(function(o){var d=o.l+o.w/2+tx-vw/2;if(Math.abs(d)<vw)sv(o.i,'--px',-d*.12,'px')});
+  if(best!==cnl){cnl=best;cn.textContent=String(best+1).padStart(2,'0')}
+ }
+
+ /* 8 · Indicador de sala: diu en quina «porta» ets (capítols, serveis, quotes…) i orienta en pàgines llargues. */
+ var rooms=$('[data-room]'),roomEl=document.getElementById('room'),rt=roomEl.querySelector('.rt span'),rcur=null;
+ function roomF(){
+  var best=null,ln=vh*.5;
+  rooms.forEach(function(el){
+   if(!el.offsetParent)return;
+   var r=el.getBoundingClientRect();
+   if(r.top<ln&&r.bottom>ln)best=el;
+  });
+  var txt=best?((best.getAttribute('data-rn')?best.getAttribute('data-rn')+' · ':'')+best.getAttribute('data-room')):'';
+  if(txt!==rcur){
+   rcur=txt;
+   if(txt){rt.textContent=txt;rt.classList.remove('go');void rt.offsetWidth;rt.classList.add('go');roomEl.classList.add('on')}
+   else roomEl.classList.remove('on');
+  }
+ }
+
+ /* 9 · Cursor contextual: una bombolla que diu què passarà (arrossega, obre, amplia). */
+ var cu=document.getElementById('cur'),mx=-200,my=-200,cx=-200,cy=-200,cs=0,ct=0,lab='';
+ if(fine){
+  addEventListener('mousemove',function(e){
+   mx=e.clientX;my=e.clientY;
+   var t=e.target&&e.target.closest?e.target.closest('[data-cur]'):null,l=t?t.getAttribute('data-cur'):'';
+   if(l!==lab){lab=l;if(l)cu.textContent=l;ct=l?1:0}
+  },{passive:true});
+  document.addEventListener('mouseleave',function(){ct=0;lab=''});
+ }
+ function cursorF(){
+  if(!fine)return;
+  if(!cs&&!ct)return;
+  if(document.querySelector('.ovl:not([hidden])')){ct=0;lab=''}
+  cx+=(mx-cx)*.24;cy+=(my-cy)*.24;cs+=(ct-cs)*.2;
+  cu.style.opacity=cs>.03?'1':'0';
+  cu.style.transform='translate3d('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px,0) scale('+(.4+.6*cs).toFixed(3)+')';
+ }
+
+ /* 10 · Scroll amb inèrcia (només ratolí): dóna pes a tota la resta. El tàctil queda nadiu. */
+ if(fine){
+  var ty=window.pageYOffset,cyy=ty,anim=false,lt=0;
+  var maxY=function(){return document.documentElement.scrollHeight-innerHeight};
+  var step=function(now){
+   var dt=Math.min(48,now-lt);lt=now;
+   cyy+=(ty-cyy)*(1-Math.pow(1-.1,dt/16.67));
+   if(Math.abs(ty-cyy)<.5){cyy=ty;anim=false}
+   window.scrollTo(0,cyy);
+   if(anim)requestAnimationFrame(step);
+  };
+  addEventListener('wheel',function(e){
+   if(e.ctrlKey||e.metaKey||e.defaultPrevented||M.busy)return;
+   if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+   if(document.querySelector('.ovl:not([hidden])')||R.classList.contains('menu-open'))return;
+   var n=e.target;
+   while(n&&n.nodeType===1&&n!==document.body&&n!==document.documentElement){
+    var st=getComputedStyle(n);
+    if((st.overflowY==='auto'||st.overflowY==='scroll')&&n.scrollHeight>n.clientHeight+1)return;
+    n=n.parentElement;
+   }
+   e.preventDefault();
+   var d=e.deltaMode===1?e.deltaY*34:e.deltaMode===2?e.deltaY*innerHeight:e.deltaY;
+   if(!anim){ty=window.pageYOffset;cyy=ty}
+   ty=cl(ty+d,0,maxY());
+   if(!anim){anim=true;lt=performance.now();requestAnimationFrame(step)}
+  },{passive:false});
+  addEventListener('scroll',function(){
+   if(anim&&Math.abs(window.pageYOffset-cyy)>4)anim=false;
+   if(!anim){ty=window.pageYOffset;cyy=ty}
+  },{passive:true});
+ }
+
+ /* 11 · Porta entre pàgines: un teló lila amb el nom de la categoria que s'obre. */
+ var gate=document.getElementById('gate'),NM={inici:'Inici',serveis:'Serveis',galeria:'Galeria',preus:'Preus',contacte:'Contacte'},NU={inici:'01',serveis:'02',galeria:'03',preus:'04',contacte:'05'};
+ M.gate=function(h,swap,done){
+  if(!gate.animate){swap();done&&done();return}
+  M.busy=true;
+  gate.querySelector('.gn').textContent=NU[h]+' / 05';gate.querySelector('.gt').textContent=NM[h];
+  gate.style.visibility='visible';
+  var ease='cubic-bezier(.76,0,.24,1)';
+  var a=gate.animate([{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:520,easing:ease,fill:'forwards'});
+  gate.querySelector('.gt').animate([{transform:'translateY(40px)',opacity:0},{transform:'none',opacity:1}],{duration:700,delay:160,easing:'cubic-bezier(.2,.75,.15,1)',fill:'backwards'});
+  ['.gtop','.gbot'].forEach(function(q,i){gate.querySelector(q).animate([{transform:'translateY('+(i?'':'-')+'18px)',opacity:0},{transform:'none',opacity:1}],{duration:600,delay:260+i*80,easing:'cubic-bezier(.2,.75,.15,1)',fill:'backwards'})});
+  a.onfinish=function(){
+   swap();
+   setTimeout(function(){
+    var b=gate.animate([{clipPath:'inset(0 0 0 0)'},{clipPath:'inset(0 0 100% 0)'}],{duration:620,easing:ease,fill:'forwards'});
+    b.onfinish=function(){gate.style.visibility='hidden';a.cancel();b.cancel();M.busy=false;done&&done()};
+   },240);
+  };
+ };
+ M.reset=function(page){
+  $('.in',page).forEach(function(el){el.classList.remove('in')});
+  $('[data-count]',page).forEach(function(el){el.textContent='0'});
+ };
+ function measure(){
+  vh=innerHeight;vw=innerWidth;desk=vw>=900;
+  hh=getComputedStyle(hdr).position==='sticky'?hdr.offsetHeight:0;
+  R.style.setProperty('--hh',hh+'px');
+  corSize();eqCache();hxCache();rooms=$('[data-room]');S.go=true;
+ }
+ M.after=function(){
+  measure();
+  if(fine){ty=cyy=window.pageYOffset;anim=false}
+  S.py=window.pageYOffset;S.go=true;
+ };
+ addEventListener('resize',measure);
+ addEventListener('load',measure);
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
+
+ function frame(){
+  requestAnimationFrame(frame);
+  if(document.hidden)return;
+  var y=window.pageYOffset;S.dy=y-S.py;S.py=y;S.v+=(S.dy-S.v)*.2;
+  if(S.dy!==0||Math.abs(S.v)>.05||S.go){
+   S.go=false;
+   heroF();tourF();doorF();svcF();corF();roomF();
+  }
+  eqF(S.dy);hxF();cursorF();
+ }
+ svcInit();measure();M.scan(document);
+ requestAnimationFrame(frame);
+ return M;
+})();
+
+/* ---------- Router ---------- */
+var PAGES=['inici','serveis','galeria','preus','contacte'];
+function hashPage(){var h=(location.hash||'#inici').slice(1);return PAGES.indexOf(h)<0?'inici':h}
+function curPage(){return PAGES.filter(function(p){return document.getElementById('p-'+p).classList.contains('on')})[0]}
+function showPage(h){
+ if(MO.on)MO.reset(document.getElementById('p-'+h));
+ PAGES.forEach(function(p){document.getElementById('p-'+p).classList.toggle('on',p===h)});
+ document.querySelectorAll('[data-nav]').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-nav')===h)});
+ window.scrollTo(0,0);
+ if(window.__goto){var g=document.getElementById(window.__goto);window.__goto=null;if(g)window.scrollTo(0,g.getBoundingClientRect().top+window.pageYOffset-96)}
+ if(MO.on)MO.after();
+}
+function route(){
+ var h=hashPage(),c=curPage();
+ if(MO.on&&MO.gate&&c&&c!==h){
+  if(MO.busy)return;
+  MO.gate(h,function(){showPage(hashPage())},function(){if(curPage()!==hashPage())route()});
+  return;
+ }
+ showPage(h);
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
